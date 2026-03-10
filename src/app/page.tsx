@@ -24,7 +24,7 @@ function Nav() {
           <a href="#faq" className="hover:text-white transition">FAQ</a>
         </div>
         <a
-          href="#pricing"
+          href="#join-waitlist"
           className="bg-electric hover:bg-electric-dark text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25"
         >
           Get SpawnOS
@@ -67,7 +67,7 @@ function Hero() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
           <a
-            href="#pricing"
+            href="#join-waitlist"
             className="w-full sm:w-auto bg-electric hover:bg-electric-dark text-white font-bold text-lg px-8 py-4 rounded-xl transition-all hover:shadow-xl hover:shadow-electric/30 glow-electric"
           >
             Get SpawnOS — From $17
@@ -94,6 +94,21 @@ function Hero() {
             </div>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ───────── CREDIBILITY BAR ───────── */
+function CredibilityBar() {
+  return (
+    <section className="py-8 bg-electric/5 border-y border-electric/10">
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        <p className="text-sm md:text-base text-gray-300">
+          <span className="text-white font-semibold">Built by the team behind Elixser Peptides</span> — managing{" "}
+          <span className="text-electric font-semibold">$80K/month</span> in operations with{" "}
+          <span className="text-electric font-semibold">12 autonomous AI agents</span>
+        </p>
       </div>
     </section>
   );
@@ -238,6 +253,38 @@ function HowItWorks() {
   );
 }
 
+/* ───────── SCREENSHOT PLACEHOLDERS ───────── */
+function ScreenshotPlaceholders() {
+  const screenshots = [
+    { label: "Screenshot: Mission Control Dashboard — real-time agent status & task queue", icon: "🖥️" },
+    { label: "Screenshot: Telegram notifications — AI agents reporting completed tasks", icon: "📱" },
+    { label: "Screenshot: AI agents completing tasks in real-time workspace output", icon: "⚡" },
+  ];
+  return (
+    <section className="py-16 md:py-24">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <p className="text-electric text-sm font-semibold tracking-widest uppercase mb-3">See It In Action</p>
+          <h2 className="text-2xl md:text-4xl font-extrabold text-white">
+            Real Infrastructure. Real Operations.
+          </h2>
+        </div>
+        <div className="grid md:grid-cols-3 gap-6">
+          {screenshots.map((s) => (
+            <div
+              key={s.label}
+              className="bg-navy-light/30 border border-dashed border-white/10 rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px]"
+            >
+              <span className="text-4xl mb-4">{s.icon}</span>
+              <p className="text-sm text-gray-500 italic">[{s.label}]</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ───────── RESULTS / SOCIAL PROOF ───────── */
 function Results() {
   return (
@@ -302,6 +349,20 @@ function Results() {
   );
 }
 
+/* ───────── URGENCY BANNER ───────── */
+function UrgencyBanner() {
+  return (
+    <div className="bg-gradient-to-r from-electric/10 via-cyan/10 to-green/10 border border-electric/20 rounded-2xl p-6 md:p-8 text-center mb-12">
+      <p className="text-2xl md:text-3xl font-extrabold text-white mb-2">
+        🔥 47 of 100 founding spots remaining
+      </p>
+      <p className="text-gray-300 text-sm md:text-base">
+        First 100 founding members get <span className="text-green font-bold">lifetime access at $297</span> — then it goes to $497/year
+      </p>
+    </div>
+  );
+}
+
 /* ───────── PRICING ───────── */
 function Pricing() {
   const tiers = [
@@ -327,10 +388,10 @@ function Pricing() {
       name: "SpawnOS Core",
       tag: "Most Popular",
       price: "$197",
-      desc: "The complete AI Team Operating System. 21 modules + production configs + case studies.",
+      desc: "The complete AI Team Operating System. 21 comprehensive modules + production configs + case studies.",
       features: [
         "Everything in Quick Start",
-        "21 step-by-step video modules",
+        "21 step-by-step modules",
         "125 workspace file templates",
         "12-agent team architecture",
         "Memory & delegation systems",
@@ -349,8 +410,8 @@ function Pricing() {
     {
       name: "Speed Pack",
       tag: "Done-With-You",
-      price: "$297",
-      desc: "Templates & Automation Pack. Skip 80% of trial-and-error. Deploy in 2 hours, not 15.",
+      price: "$397",
+      desc: "The Complete Acceleration Bundle. Skip 80% of trial-and-error. Deploy in 2 hours, not 15. Includes priority support + quarterly strategy calls.",
       features: [
         "Everything in Core",
         "MEMORY.md starter kit",
@@ -361,20 +422,22 @@ function Pricing() {
         "Cost optimization config bundle",
         "Google & e-commerce boilerplates",
         "30-minute deployment checklist",
+        "Priority email support (48hr response)",
+        "Quarterly group strategy call access",
       ],
-      cta: "Get Speed Pack — $297",
+      cta: "Get Speed Pack — $397",
       highlight: false,
       color: "cyan",
-      payment: "or 3 × $104/mo",
+      payment: "or 3 × $139/mo",
     },
     {
-      name: "SpawnLab",
-      tag: "Community",
-      price: "$497",
-      period: "/year",
-      desc: "AI Team Mastery Academy. Monthly updates, live Q&A, workshops, community — forever.",
+      name: "Founding Member",
+      tag: "Limited — 100 Spots",
+      price: "$297",
+      desc: "Lifetime access to SpawnOS + SpawnLab. Everything, forever. Normally $497/year — founding members pay once.",
       features: [
         "Everything in Speed Pack",
+        "Lifetime access (never pay again)",
         "Monthly new modules & updates",
         "Live monthly Q&A sessions",
         "Quarterly advanced workshops",
@@ -383,10 +446,10 @@ function Pricing() {
         "Partner discounts ($200+/yr value)",
         "Quarterly Show & Tell sessions",
       ],
-      cta: "Join SpawnLab — $497/yr",
+      cta: "Claim Founding Spot — $297",
       highlight: false,
       color: "green",
-      special: "Founding: $297 one-time for lifetime",
+      special: "🔥 Only 47 founding spots left — normally $497/year",
     },
   ];
   return (
@@ -401,6 +464,8 @@ function Pricing() {
             Every tier includes production-tested infrastructure. Not theory. Not demos. Real systems you can deploy this weekend.
           </p>
         </div>
+
+        <UrgencyBanner />
 
         <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
           {tiers.map((t) => (
@@ -423,7 +488,6 @@ function Pricing() {
               <h3 className="text-xl font-bold text-white mb-1">{t.name}</h3>
               <div className="flex items-end gap-1 mb-1">
                 <span className="text-4xl font-extrabold text-white font-mono">{t.price}</span>
-                {t.period && <span className="text-gray-500 text-sm mb-1">{t.period}</span>}
               </div>
               {t.payment && <p className="text-xs text-gray-500 mb-3">{t.payment}</p>}
               {t.special && <p className="text-xs text-green font-semibold mb-3">{t.special}</p>}
@@ -437,7 +501,7 @@ function Pricing() {
                 ))}
               </ul>
               <a
-                href="#"
+                href="#join-waitlist"
                 className={`block text-center font-semibold py-3 rounded-xl transition-all ${
                   t.highlight
                     ? "bg-electric hover:bg-electric-dark text-white hover:shadow-lg hover:shadow-electric/25"
@@ -496,12 +560,33 @@ function WhoFor() {
   );
 }
 
+/* ───────── BUILT BY ───────── */
+function BuiltBy() {
+  return (
+    <section className="py-16 md:py-24 bg-navy/30">
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        <p className="text-gray-500 text-sm font-semibold tracking-widest uppercase mb-4">From the Makers of</p>
+        <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4">Elixser Peptides</h3>
+        <p className="text-gray-400 max-w-2xl mx-auto mb-8 leading-relaxed">
+          SpawnOS was born inside a real business doing <span className="text-white font-semibold">$80K/month</span> in revenue.
+          We built the AI team infrastructure to run operations, then packaged it so you can deploy the same system.
+          12 autonomous agents. 125 production files. 4+ months in daily production. Zero theory — all battle-tested.
+        </p>
+        <div className="inline-flex items-center gap-3 bg-navy-light/50 border border-white/10 rounded-full px-6 py-3">
+          <span className="w-2 h-2 rounded-full bg-green pulse-glow" />
+          <span className="text-sm text-gray-300">Currently powering $80K/month in live operations</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ───────── FAQ ───────── */
 function FAQ() {
   const faqs = [
     {
       q: "I'm not technical. Can I really do this?",
-      a: "If you can use Notion or Zapier, you can use SpawnOS. No coding required. We provide step-by-step video guides, copy-paste configs, and community support. 80% of our users started with zero terminal experience.",
+      a: "If you can use Notion or Zapier, you can use SpawnOS. No coding required. We provide step-by-step guides, copy-paste configs, and community support. 80% of our users started with zero terminal experience.",
     },
     {
       q: "How is this different from ChatGPT?",
@@ -517,7 +602,7 @@ function FAQ() {
     },
     {
       q: "What if AI tools change?",
-      a: "SpawnOS teaches spawning principles that work across any AI platform. Memory architecture, team delegation, cost optimization — these are system-design patterns, not tool tricks. Plus SpawnLab members get monthly updates as tools evolve.",
+      a: "SpawnOS teaches spawning principles that work across any AI platform. Memory architecture, team delegation, cost optimization — these are system-design patterns, not tool tricks. Plus founding members get lifetime updates as tools evolve.",
     },
     {
       q: "Is this just another AI course?",
@@ -576,10 +661,21 @@ function FAQ() {
   );
 }
 
-/* ───────── FINAL CTA ───────── */
-function FinalCTA() {
+/* ───────── EMAIL CAPTURE FORM ───────── */
+function EmailCapture() {
+  const [submitted, setSubmitted] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // For now, open mailto as fallback
+    window.location.href = `mailto:hello@aminomastery.com?subject=SpawnOS Waitlist&body=Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}`;
+    setSubmitted(true);
+  };
+
   return (
-    <section className="py-20 md:py-32 relative overflow-hidden">
+    <section id="join-waitlist" className="py-20 md:py-32 relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-electric/5 rounded-full blur-[150px]" />
       </div>
@@ -589,18 +685,49 @@ function FinalCTA() {
           <span className="bg-gradient-to-r from-electric via-cyan to-green bg-clip-text text-transparent"> One Weekend </span>
           Away
         </h2>
-        <p className="text-lg text-gray-400 mb-10 max-w-xl mx-auto">
+        <p className="text-lg text-gray-400 mb-4 max-w-xl mx-auto">
           Every week you wait is another 60-80 hour week. Another month stuck as the bottleneck.
           Copy the system. Spawn your team. Start this weekend.
         </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-          <a
-            href="#pricing"
-            className="w-full sm:w-auto bg-electric hover:bg-electric-dark text-white font-bold text-lg px-10 py-4 rounded-xl transition-all hover:shadow-xl hover:shadow-electric/30 glow-electric"
-          >
-            Get SpawnOS Now
-          </a>
-        </div>
+
+        {/* Urgency */}
+        <p className="text-green font-bold text-lg mb-8">
+          🔥 47 of 100 founding spots remaining — $297 lifetime access
+        </p>
+
+        {submitted ? (
+          <div className="bg-green/10 border border-green/20 rounded-2xl p-8 max-w-md mx-auto">
+            <p className="text-2xl mb-2">🎉</p>
+            <p className="text-white font-bold text-xl mb-2">You&apos;re on the list!</p>
+            <p className="text-gray-400 text-sm">We&apos;ll be in touch with early access details.</p>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4 mb-8">
+            <input
+              type="text"
+              placeholder="Your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              className="w-full px-5 py-3.5 bg-navy-light border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-electric transition-colors"
+            />
+            <input
+              type="email"
+              placeholder="Your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full px-5 py-3.5 bg-navy-light border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-electric transition-colors"
+            />
+            <button
+              type="submit"
+              className="w-full bg-electric hover:bg-electric-dark text-white font-bold text-lg px-8 py-4 rounded-xl transition-all hover:shadow-xl hover:shadow-electric/30 glow-electric"
+            >
+              Get SpawnOS Now
+            </button>
+          </form>
+        )}
+
         <p className="text-sm text-gray-500">
           30-day money-back guarantee · Lifetime updates · Production-tested infrastructure
         </p>
@@ -633,14 +760,17 @@ export default function Home() {
     <>
       <Nav />
       <Hero />
+      <CredibilityBar />
       <ProofBar />
       <PainPoints />
       <HowItWorks />
+      <ScreenshotPlaceholders />
       <Results />
       <Pricing />
       <WhoFor />
+      <BuiltBy />
       <FAQ />
-      <FinalCTA />
+      <EmailCapture />
       <Footer />
     </>
   );
