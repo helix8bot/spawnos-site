@@ -180,7 +180,7 @@ export default function Home() {
           </a>
           <nav className="hidden items-center gap-7 text-sm text-zinc-400 md:flex">
             <a href="#pain" className="transition hover:text-white">Why SpawnOS</a>
-            <a href="#mechanism" className="transition hover:text-white">Mechanism</a>
+            <a href="#mechanism" className="transition hover:text-white">How it works</a>
             <a href="#pricing" className="transition hover:text-white">Pricing</a>
             <a href="#faq" className="transition hover:text-white">FAQ</a>
           </nav>
@@ -191,7 +191,7 @@ export default function Home() {
       <section id="top" className="section-wrap py-16 sm:py-20 lg:py-28">
         <div className="hero-grid">
           <div className="fade-up order-1">
-            <span className="eyebrow">Hook — You're the bottleneck</span>
+            <span className="eyebrow">Install the operating system that gets you out of the middle</span>
             <h1 className="max-w-3xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
               Stop Working Solo. Start Spawning the AI Team That Runs Your Business.
             </h1>
@@ -199,7 +199,7 @@ export default function Home() {
               Install SpawnOS and copy <strong>the exact framework built to run e-commerce brands and agencies doing $100K+ per month</strong>—so you can get reports delivered in 3 minutes, full websites built in 11 minutes, and 12 autonomous agents running 24/7.
             </p>
             <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg">
-              SpawnOS is not another AI course and it's not another pile of prompts. It's the operating system Perry uses to run a real business with an AI COO and specialist agents—so you can reclaim 20-30 hours a week, scale output fast, and stop being the person every task depends on.
+              SpawnOS is not another AI course and it's not another pile of prompts. It's the operating system built inside a live business with an AI COO and specialist agents—so you can reclaim 20-30 hours a week, scale output fast, and stop being the person every task depends on.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
@@ -229,7 +229,7 @@ export default function Home() {
 
       <section id="pain" className="section-wrap py-12 sm:py-16 lg:py-24">
         <SectionHeading
-          eyebrow="Agitate — What staying solo costs"
+          eyebrow="The solo operator trap"
           title="Every extra week you stay the bottleneck, your growth taxes you with more admin, slower launches, and missed follow-up."
           body="You're still acting as CEO, CMO, COO, operator, and support team at the same time. That works until the business hits a ceiling—then every new sale creates more work, and growth stalls because everything still has to pass through you."
         />
@@ -263,9 +263,9 @@ export default function Home() {
       <section id="mechanism" className="border-y border-white/5 bg-white/[0.02] py-16 sm:py-20 lg:py-24">
         <div className="section-wrap">
           <SectionHeading
-            eyebrow="Mechanism — Why AI team beats tools or hiring"
+            eyebrow="Why this works"
             title="Why an AI Team Beats AI Tools, VAs, and Hiring at This Stage"
-            body="Perry isn't teaching theory—he's running 12 autonomous agents 24/7, getting reports delivered in 3 minutes, full websites built in 11 minutes, and generating $14.2K in February 2026 on $1.5K ad spend. The unlock is not “using AI more.” The unlock is installing an AI team with clear roles, memory, delegation, and execution—so the business stops depending on one tired operator and starts moving like a coordinated company."
+            body="This is not theory. It is a field-tested operating system built around 12 autonomous agents running 24/7, reports delivered in 3 minutes, full websites built in 11 minutes, and $14.2K generated in February 2026 on $1.5K ad spend. The unlock is not “using AI more.” The unlock is installing an AI team with clear roles, memory, delegation, and execution—so the business stops depending on one tired operator and starts moving like a coordinated company."
           />
 
           <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
@@ -276,20 +276,11 @@ export default function Home() {
               </p>
             </div>
             <div className="surface-card rounded-3xl p-8 sm:p-10">
-              <p className="text-xs font-semibold uppercase tracking-[0.26em] text-zinc-500">Ladder logic</p>
-              <div className="mt-6 space-y-5">
-                <div>
-                  <p className="text-sm font-semibold text-red-300">$17 = Quick win / first implementation map</p>
-                  <p className="mt-2 text-sm leading-6 text-zinc-400">Map your first AI team in one sitting.</p>
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-red-300">$67 = Full system / best value / most buyers should start here</p>
-                  <p className="mt-2 text-sm leading-6 text-zinc-400">Install the full operating system, methodology, and execution path.</p>
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-orange-300">$147 = Personalized implementation / access / limited spots</p>
-                  <p className="mt-2 text-sm leading-6 text-zinc-400">Apply for guided custom setup built around your actual operation.</p>
-                </div>
+              <h3 className="text-2xl font-bold text-white">What changes after you install it</h3>
+              <div className="mt-6 space-y-5 text-sm leading-6 text-zinc-400">
+                <p>You stop opening ten tabs just to move one project forward.</p>
+                <p>You stop being the handoff point for every report, page, workflow, and follow-up.</p>
+                <p>You start operating with a team that can think in roles, retain context, and execute around the clock.</p>
               </div>
             </div>
           </div>
@@ -298,7 +289,7 @@ export default function Home() {
 
       <section id="proof" className="section-wrap py-16 sm:py-20 lg:py-24">
         <SectionHeading
-          eyebrow="Proof — Real numbers"
+          eyebrow="Real results from real operations"
           title="What SpawnOS Actually Produces in the Real World"
           body="This is what happens when you stop using AI like a chatbot and start using it like infrastructure. SpawnOS gives you a production-ready operating system that turns AI from “occasionally useful” into a team that creates leverage every day."
         />
@@ -332,9 +323,9 @@ export default function Home() {
       <section id="pricing" className="border-y border-white/5 bg-white/[0.02] py-16 sm:py-20 lg:py-24">
         <div className="section-wrap">
           <SectionHeading
-            eyebrow="Offer — 3 tiers"
+            eyebrow="Choose your path"
             title="Choose How Fast You Want to Stop Being the Bottleneck."
-            body="$17 = understand and map your first AI team. $67 = install the full operating system. $147 = get personalized implementation access. Every option is designed to buy back operator time faster than hiring or piecing tools together."
+            body="Start with the playbook, install the full system, or apply for a custom build. Every option is designed to buy back operator time faster than hiring or piecing tools together."
           />
 
           <div className="grid gap-6 xl:grid-cols-3">
@@ -379,7 +370,7 @@ export default function Home() {
       </section>
 
       <section id="faq" className="section-wrap py-16 sm:py-20 lg:py-24">
-        <SectionHeading eyebrow="Objections + FAQ" title="Questions? Answers." />
+        <SectionHeading eyebrow="Common questions" title="Questions? Answers." />
         <div className="grid gap-6 lg:grid-cols-2">
           {[
             ["I'm not technical.", "You do not need to code from scratch—you need to follow a system built for operators, not developers."],
@@ -389,7 +380,7 @@ export default function Home() {
             ["Do I need to be technical to use SpawnOS?", "No. SpawnOS is designed for operators who want leverage, not for developers who want another side project."],
             ["How is this different from just using ChatGPT or Claude?", "ChatGPT gives you answers. SpawnOS gives you an AI COO and specialist team with roles, memory, delegation, and execution."],
             ["How long does it take to start seeing value?", "Fast. The point is leverage quickly—reports in 3 minutes, websites in 11 minutes, and 20-30 hours/week saved."],
-            ["Is SpawnOS another AI information product with hype and no proof?", "No. It is built from Perry's real operating system, with 12 autonomous agents and $14.2K revenue on $1.5K ad spend."],
+            ["Is SpawnOS another AI information product with hype and no proof?", "No. It is built from a live operating system, with 12 autonomous agents and $14.2K revenue on $1.5K ad spend."],
           ].map(([question, answer]) => (
             <article key={question} className="surface-card rounded-3xl p-7 sm:p-8">
               <h3 className="text-lg font-bold text-white">{question}</h3>
@@ -401,7 +392,7 @@ export default function Home() {
 
       <section id="final-cta" className="section-wrap py-16 sm:py-20 lg:py-24">
         <div className="surface-card accent-ring rounded-[2rem] px-6 py-10 text-center sm:px-10 sm:py-14 lg:px-16">
-          <span className="eyebrow">CTA — above fold, mid-page, bottom</span>
+          <span className="eyebrow">Ready to install your AI team?</span>
           <h2 className="mx-auto max-w-4xl text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
             Every week you wait is another 20-30 hours lost to tasks your AI team could already be handling.
           </h2>
