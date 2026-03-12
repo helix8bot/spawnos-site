@@ -2,15 +2,17 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SpawnOS — The Operating System for Spawning AI Teams",
-  description: "Stop working solo. Start spawning. Build your AI COO + 12 specialists this weekend. Production-tested infrastructure, not theory.",
-  keywords: ["AI team", "OpenClaw", "AI automation", "SpawnOS", "AI COO", "solopreneur"],
+  metadataBase: new URL("https://spawnos-site.vercel.app"),
+  title: "SpawnOS — Stop Working Solo. Start Spawning the AI Team That Runs Your Business.",
+  description:
+    "Install SpawnOS and copy the exact framework built to run e-commerce brands and agencies doing $100K+ per month.",
   icons: {
     icon: "/favicon.svg",
   },
   openGraph: {
-    title: "SpawnOS — Build Your Own AI Team",
-    description: "Copy the exact AI team running a $14.2K/month business. Setup in 4 hours. 12 specialist agents, 125 workspace files, production-tested.",
+    title: "SpawnOS",
+    description:
+      "Stop working solo. Start spawning the AI team that runs your business.",
     type: "website",
     url: "https://spawnos-site.vercel.app",
     images: [
@@ -18,14 +20,15 @@ export const metadata: Metadata = {
         url: "/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "SpawnOS — Build Your Own AI Team",
+        alt: "SpawnOS",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SpawnOS — Build Your Own AI Team",
-    description: "Stop working solo. Start spawning. 12 AI agents. One weekend setup.",
+    title: "SpawnOS",
+    description:
+      "Stop working solo. Start spawning the AI team that runs your business.",
     images: ["/og-image.svg"],
   },
 };
@@ -36,19 +39,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="grain antialiased">
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

@@ -1,10 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#0A1128"/>
-  <rect x="0" y="0" width="1200" height="4" fill="#0066FF"/>
-  <text x="600" y="260" font-family="system-ui, sans-serif" font-size="72" font-weight="800" fill="white" text-anchor="middle">
-    <tspan fill="#0066FF">Spawn</tspan><tspan fill="white">OS</tspan>
-  </text>
-  <text x="600" y="340" font-family="system-ui, sans-serif" font-size="32" fill="#B0B8C9" text-anchor="middle">Build Your Own AI Team</text>
-  <text x="600" y="400" font-family="system-ui, sans-serif" font-size="20" fill="#64748B" text-anchor="middle">12 Specialist Agents · 125 Workspace Files · 4-Hour Setup</text>
-  <text x="600" y="520" font-family="system-ui, sans-serif" font-size="18" fill="#00FF88" text-anchor="middle">⚡ From the team managing $80K/month with autonomous AI agents</text>
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0A0A0A"/>
+  <rect x="40" y="40" width="1120" height="550" rx="28" fill="#141414" stroke="#1F1F1F"/>
+  <circle cx="1040" cy="150" r="140" fill="#EF4444" fill-opacity="0.12"/>
+  <circle cx="930" cy="480" r="120" fill="#F97316" fill-opacity="0.12"/>
+  <text x="100" y="160" font-family="Inter, system-ui, sans-serif" font-size="24" letter-spacing="8" fill="#FCA5A5">SPAWNOS</text>
+  <text x="100" y="260" font-family="Inter, system-ui, sans-serif" font-size="68" font-weight="800" fill="#FAFAFA">Stop Working Solo.</text>
+  <text x="100" y="340" font-family="Inter, system-ui, sans-serif" font-size="68" font-weight="800" fill="#FAFAFA">Start Spawning.</text>
+  <text x="100" y="410" font-family="Inter, system-ui, sans-serif" font-size="28" fill="#A1A1AA">The AI team operating system for leveraged operators.</text>
+  <rect x="100" y="470" width="260" height="62" rx="14" fill="#EF4444"/>
+  <text x="230" y="510" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">SpawnOS</text>
 </svg>
