@@ -1,3 +1,34 @@
+const sectionPhotos = {
+  hero: {
+    src: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80",
+    alt: "Founder working late at a dark desk setup with a laptop and glowing screens.",
+  },
+  pain: {
+    src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=80",
+    alt: "Operator working late at a laptop, showing the strain of running everything alone.",
+  },
+  mechanism: {
+    src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80",
+    alt: "Clean multi-monitor workspace set up like an automation command center.",
+  },
+  proof: {
+    src: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1200&q=80",
+    alt: "Confident operators reviewing growth metrics together on a laptop.",
+  },
+  pricing: {
+    src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80",
+    alt: "Modern remote work setup with a laptop in a premium coworking-style space.",
+  },
+  faq: {
+    src: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1200&q=80",
+    alt: "Relaxed entrepreneurs having a calm conversation in a modern workspace.",
+  },
+  finalCta: {
+    src: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&q=80",
+    alt: "City skyline at sunset suggesting momentum, ambition, and a strong next chapter.",
+  },
+};
+
 const ClockIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-6 w-6">
     <circle cx="12" cy="12" r="9" />
@@ -104,55 +135,66 @@ const pricingTiers = [
 
 function HeroVisual() {
   return (
-    <div className="hero-visual p-5 sm:p-6 lg:p-7">
-      <div className="relative z-10 flex h-full flex-col gap-4">
-        <div className="flex items-center justify-between rounded-2xl border border-white/8 bg-black/35 px-4 py-3 text-sm text-zinc-300 backdrop-blur">
-          <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Mission Control</p>
-            <p className="mt-1 text-sm font-semibold text-zinc-100">AI team command center</p>
-          </div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1 text-xs font-semibold text-red-300">
-            <span className="h-2 w-2 rounded-full bg-red-400" /> 12 live
-          </div>
-        </div>
+    <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-950 shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
+      <img
+        src={sectionPhotos.hero.src}
+        alt={sectionPhotos.hero.alt}
+        className="h-full min-h-[560px] w-full object-cover"
+        loading="eager"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,10,0.12),rgba(10,10,10,0.78)_45%,rgba(10,10,10,0.96))]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(239,68,68,0.2),transparent_35%)]" />
 
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div className="metric-tile">
-            <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Daily reporting</p>
-            <p className="mt-3 text-3xl font-extrabold text-white">3 min</p>
-            <p className="mt-2 text-sm text-zinc-400">Reports delivered before you open your inbox.</p>
-          </div>
-          <div className="metric-tile">
-            <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Build velocity</p>
-            <p className="mt-3 text-3xl font-extrabold text-white">11 min</p>
-            <p className="mt-2 text-sm text-zinc-400">Landing pages shipped without waiting on your bandwidth.</p>
-          </div>
-        </div>
-
-        <div className="metric-tile">
-          <div className="mb-4 flex items-center justify-between">
+      <div className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-6 lg:p-7">
+        <div className="flex h-full flex-col gap-4">
+          <div className="flex items-center justify-between rounded-2xl border border-white/8 bg-black/35 px-4 py-3 text-sm text-zinc-300 backdrop-blur">
             <div>
-              <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Agent network</p>
-              <p className="mt-1 text-lg font-semibold text-white">Roles, memory, delegation, execution</p>
+              <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Mission Control</p>
+              <p className="mt-1 text-sm font-semibold text-zinc-100">AI team command center</p>
             </div>
-            <p className="rounded-full border border-orange-500/20 bg-orange-500/10 px-3 py-1 text-xs font-semibold text-orange-200">
-              $14.2K on $1.5K ad spend
-            </p>
+            <div className="inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1 text-xs font-semibold text-red-300">
+              <span className="h-2 w-2 rounded-full bg-red-400" /> 12 live
+            </div>
           </div>
-          <div className="grid gap-3 sm:grid-cols-3">
-            {[
-              ["COO", "Routing live"],
-              ["Content", "Queued"],
-              ["Ops", "Monitoring"],
-              ["Research", "Active"],
-              ["Web", "Deploying"],
-              ["QA", "Passed"],
-            ].map(([name, status]) => (
-              <div key={name} className="rounded-xl border border-white/6 bg-zinc-950/70 px-3 py-3">
-                <p className="text-sm font-semibold text-zinc-100">{name}</p>
-                <p className="mt-1 text-xs text-zinc-500">{status}</p>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="metric-tile">
+              <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Daily reporting</p>
+              <p className="mt-3 text-3xl font-extrabold text-white">3 min</p>
+              <p className="mt-2 text-sm text-zinc-400">Reports delivered before you open your inbox.</p>
+            </div>
+            <div className="metric-tile">
+              <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Build velocity</p>
+              <p className="mt-3 text-3xl font-extrabold text-white">11 min</p>
+              <p className="mt-2 text-sm text-zinc-400">Landing pages shipped without waiting on your bandwidth.</p>
+            </div>
+          </div>
+
+          <div className="metric-tile">
+            <div className="mb-4 flex items-center justify-between">
+              <div>
+                <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Agent network</p>
+                <p className="mt-1 text-lg font-semibold text-white">Roles, memory, delegation, execution</p>
               </div>
-            ))}
+              <p className="rounded-full border border-orange-500/20 bg-orange-500/10 px-3 py-1 text-xs font-semibold text-orange-200">
+                $14.2K on $1.5K ad spend
+              </p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-3">
+              {[
+                ["COO", "Routing live"],
+                ["Content", "Queued"],
+                ["Ops", "Monitoring"],
+                ["Research", "Active"],
+                ["Web", "Deploying"],
+                ["QA", "Passed"],
+              ].map(([name, status]) => (
+                <div key={name} className="rounded-xl border border-white/6 bg-zinc-950/70 px-3 py-3">
+                  <p className="text-sm font-semibold text-zinc-100">{name}</p>
+                  <p className="mt-1 text-xs text-zinc-500">{status}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -166,6 +208,20 @@ function SectionHeading({ eyebrow, title, body }: { eyebrow: string; title: stri
       <span className="eyebrow">{eyebrow}</span>
       <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">{title}</h2>
       {body ? <p className="mt-5 text-base leading-7 text-zinc-400 sm:text-lg">{body}</p> : null}
+    </div>
+  );
+}
+
+function SectionImage({ src, alt, eager = false, height = "h-[320px] sm:h-[420px]" }: { src: string; alt: string; eager?: boolean; height?: string }) {
+  return (
+    <div className={`relative overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-950 ${height}`}>
+      <img
+        src={src}
+        alt={alt}
+        loading={eager ? "eager" : "lazy"}
+        className="h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,10,0.08),rgba(10,10,10,0.18)_45%,rgba(10,10,10,0.5))]" />
     </div>
   );
 }
@@ -189,7 +245,7 @@ export default function Home() {
       </header>
 
       <section id="top" className="section-wrap py-16 sm:py-20 lg:py-28">
-        <div className="hero-grid">
+        <div className="hero-grid items-center gap-10 xl:gap-14">
           <div className="fade-up order-1">
             <span className="eyebrow">Install the operating system that gets you out of the middle</span>
             <h1 className="max-w-3xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
@@ -233,26 +289,31 @@ export default function Home() {
           title="Every extra week you stay the bottleneck, your growth taxes you with more admin, slower launches, and missed follow-up."
           body="You're still acting as CEO, CMO, COO, operator, and support team at the same time. That works until the business hits a ceiling—then every new sale creates more work, and growth stalls because everything still has to pass through you."
         />
-        <div className="grid gap-6 lg:grid-cols-3">
-          {[
-            {
-              title: "You Are the Bottleneck",
-              body: "You're still acting as CEO, CMO, COO, operator, and support team at the same time. That works until the business hits a ceiling—then every new sale creates more work, and growth stalls because everything still has to pass through you.",
-            },
-            {
-              title: "Hiring Is Not the Smart Next Move",
-              body: "A real hire costs $50-80K plus benefits, management time, training, and mistakes you pay for twice. At this stage, you don't need payroll overhead—you need leverage that gives you execution without adding another full-time dependency.",
-            },
-            {
-              title: "AI Tools Alone Don't Execute",
-              body: "You've already tried ChatGPT, Claude, or random AI tools—and what you got was help, not a team. Tools can answer prompts, but they don't replace roles, systems, memory, delegation, and follow-through unless they're structured to work like an operating system.",
-            },
-          ].map((item) => (
-            <article key={item.title} className="surface-card rounded-3xl p-7 sm:p-8">
-              <h3 className="text-xl font-bold text-white">{item.title}</h3>
-              <p className="mt-4 text-base leading-7 text-zinc-400">{item.body}</p>
-            </article>
-          ))}
+
+        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div className="grid gap-6 lg:grid-cols-1">
+            {[
+              {
+                title: "You Are the Bottleneck",
+                body: "You're still acting as CEO, CMO, COO, operator, and support team at the same time. That works until the business hits a ceiling—then every new sale creates more work, and growth stalls because everything still has to pass through you.",
+              },
+              {
+                title: "Hiring Is Not the Smart Next Move",
+                body: "A real hire costs $50-80K plus benefits, management time, training, and mistakes you pay for twice. At this stage, you don't need payroll overhead—you need leverage that gives you execution without adding another full-time dependency.",
+              },
+              {
+                title: "AI Tools Alone Don't Execute",
+                body: "You've already tried ChatGPT, Claude, or random AI tools—and what you got was help, not a team. Tools can answer prompts, but they don't replace roles, systems, memory, delegation, and follow-through unless they're structured to work like an operating system.",
+              },
+            ].map((item) => (
+              <article key={item.title} className="surface-card rounded-3xl p-7 sm:p-8">
+                <h3 className="text-xl font-bold text-white">{item.title}</h3>
+                <p className="mt-4 text-base leading-7 text-zinc-400">{item.body}</p>
+              </article>
+            ))}
+          </div>
+
+          <SectionImage src={sectionPhotos.pain.src} alt={sectionPhotos.pain.alt} />
         </div>
 
         <div className="mt-10 flex justify-center">
@@ -275,13 +336,16 @@ export default function Home() {
                 ChatGPT can answer questions, but it won't run your business with memory, roles, delegation, and 24/7 execution. Hiring is expensive. Random tools create more tabs, not more output. SpawnOS gives you the operating system for spawning an AI team—so instead of asking one chatbot for help, you install a system that thinks, delegates, tracks, and executes like a real company.
               </p>
             </div>
-            <div className="surface-card rounded-3xl p-8 sm:p-10">
-              <h3 className="text-2xl font-bold text-white">What changes after you install it</h3>
-              <div className="mt-6 space-y-5 text-sm leading-6 text-zinc-400">
-                <p>You stop opening ten tabs just to move one project forward.</p>
-                <p>You stop being the handoff point for every report, page, workflow, and follow-up.</p>
-                <p>You start operating with a team that can think in roles, retain context, and execute around the clock.</p>
+            <div className="space-y-6">
+              <div className="surface-card rounded-3xl p-8 sm:p-10">
+                <h3 className="text-2xl font-bold text-white">What changes after you install it</h3>
+                <div className="mt-6 space-y-5 text-sm leading-6 text-zinc-400">
+                  <p>You stop opening ten tabs just to move one project forward.</p>
+                  <p>You stop being the handoff point for every report, page, workflow, and follow-up.</p>
+                  <p>You start operating with a team that can think in roles, retain context, and execute around the clock.</p>
+                </div>
               </div>
+              <SectionImage src={sectionPhotos.mechanism.src} alt={sectionPhotos.mechanism.alt} height="h-[280px] sm:h-[320px]" />
             </div>
           </div>
         </div>
@@ -293,6 +357,10 @@ export default function Home() {
           title="What SpawnOS Actually Produces in the Real World"
           body="This is what happens when you stop using AI like a chatbot and start using it like infrastructure. SpawnOS gives you a production-ready operating system that turns AI from “occasionally useful” into a team that creates leverage every day."
         />
+
+        <div className="mb-6">
+          <SectionImage src={sectionPhotos.proof.src} alt={sectionPhotos.proof.alt} height="h-[260px] sm:h-[320px] lg:h-[360px]" />
+        </div>
 
         <div className="grid gap-6 md:grid-cols-3">
           {proofCards.map((card) => (
@@ -327,6 +395,10 @@ export default function Home() {
             title="Choose How Fast You Want to Stop Being the Bottleneck."
             body="Start with the playbook, install the full system, or apply for a custom build. Every option is designed to buy back operator time faster than hiring or piecing tools together."
           />
+
+          <div className="mb-8">
+            <SectionImage src={sectionPhotos.pricing.src} alt={sectionPhotos.pricing.alt} height="h-[260px] sm:h-[320px] lg:h-[340px]" />
+          </div>
 
           <div className="grid gap-6 xl:grid-cols-3">
             {pricingTiers.map((tier) => (
@@ -371,6 +443,11 @@ export default function Home() {
 
       <section id="faq" className="section-wrap py-16 sm:py-20 lg:py-24">
         <SectionHeading eyebrow="Common questions" title="Questions? Answers." />
+
+        <div className="mb-8">
+          <SectionImage src={sectionPhotos.faq.src} alt={sectionPhotos.faq.alt} height="h-[240px] sm:h-[280px] lg:h-[320px]" />
+        </div>
+
         <div className="grid gap-6 lg:grid-cols-2">
           {[
             ["I'm not technical.", "You do not need to code from scratch—you need to follow a system built for operators, not developers."],
@@ -391,17 +468,28 @@ export default function Home() {
       </section>
 
       <section id="final-cta" className="section-wrap py-16 sm:py-20 lg:py-24">
-        <div className="surface-card accent-ring rounded-[2rem] px-6 py-10 text-center sm:px-10 sm:py-14 lg:px-16">
-          <span className="eyebrow">Ready to install your AI team?</span>
-          <h2 className="mx-auto max-w-4xl text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Every week you wait is another 20-30 hours lost to tasks your AI team could already be handling.
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg">
-            Start spawning your AI team now—or apply for a guided build if you want personalized implementation.
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href="#pricing" className="primary-btn">Install the System That Buys Back My Time</a>
-            <a href="https://launch.spawnos.io" className="secondary-btn border-orange-500/35 text-orange-100 hover:bg-orange-500/10">Apply for Custom Build →</a>
+        <div className="relative overflow-hidden rounded-[2rem] border border-red-500/20 bg-zinc-950">
+          <img
+            src={sectionPhotos.finalCta.src}
+            alt={sectionPhotos.finalCta.alt}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,10,0.4),rgba(10,10,10,0.82)_45%,rgba(10,10,10,0.95))]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_center,rgba(239,68,68,0.22),transparent_40%)]" />
+
+          <div className="surface-card accent-ring relative z-10 rounded-[2rem] bg-black/25 px-6 py-10 text-center sm:px-10 sm:py-14 lg:px-16">
+            <span className="eyebrow">Ready to install your AI team?</span>
+            <h2 className="mx-auto max-w-4xl text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
+              Every week you wait is another 20-30 hours lost to tasks your AI team could already be handling.
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-zinc-300 sm:text-lg">
+              Start spawning your AI team now—or apply for a guided build if you want personalized implementation.
+            </p>
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <a href="#pricing" className="primary-btn">Install the System That Buys Back My Time</a>
+              <a href="https://launch.spawnos.io" className="secondary-btn border-orange-500/35 text-orange-100 hover:bg-orange-500/10">Apply for Custom Build →</a>
+            </div>
           </div>
         </div>
       </section>
