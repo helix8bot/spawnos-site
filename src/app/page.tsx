@@ -1,3 +1,8 @@
+"use client";
+
+import { useState } from "react";
+import type { Tier } from "@/lib/commerce";
+
 const sectionPhotos = {
   hero: {
     src: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80",
@@ -75,7 +80,19 @@ const proofCards = [
   },
 ];
 
-const pricingTiers = [
+const pricingTiers: Array<{
+  name: string;
+  price: string;
+  description: string;
+  bullets: string[];
+  cta: string;
+  href: string;
+  badge: string | null;
+  emphasized: boolean;
+  premium: boolean;
+  note?: string;
+  checkoutTier?: Tier;
+}> = [
   {
     name: "SpawnOS Quickstart Playbook",
     price: "$17",
@@ -88,8 +105,9 @@ const pricingTiers = [
       "Create your first working AI team map today so you know what to build first and what to ignore.",
       "Start buying back operator time immediately with the simplest path to 20-30 hours/week saved.",
     ],
-    cta: "Start Building My AI Team",
+    cta: "Start Building Your AI Team →",
     href: "#final-cta",
+    checkoutTier: "starter",
     badge: null,
     emphasized: false,
     premium: false,
@@ -106,8 +124,9 @@ const pricingTiers = [
       "Create reports, content, websites, and workflows faster with the same system that delivers reports in 3 minutes and websites in 11 minutes.",
       "Turn one overworked operator into a leveraged operator with the exact framework built to run e-commerce brands and agencies doing $100K+ per month.",
     ],
-    cta: "Install the Full SpawnOS System",
+    cta: "Install the Full System →",
     href: "#final-cta",
+    checkoutTier: "system",
     badge: "Most Popular",
     emphasized: true,
     premium: false,
@@ -227,6 +246,33 @@ function SectionImage({ src, alt, eager = false, height = "h-[320px] sm:h-[420px
 }
 
 export default function Home() {
+  const [loadingTier, setLoadingTier] = useState<Tier | null>(null);
+
+  async function startCheckout(tier: Tier) {
+    try {
+      setLoadingTier(tier);
+      const response = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ tier }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data?.url) {
+        alert(data?.error || "Checkout coming soon — email build@spawnos.io");
+        return;
+      }
+
+      window.location.href = data.url;
+    } catch (error) {
+      console.error("Checkout start failed", error);
+      alert("Checkout coming soon — email build@spawnos.io");
+    } finally {
+      setLoadingTier(null);
+    }
+  }
+
   return (
     <main className="page-shell">
       <header className="sticky top-0 z-50 border-b border-white/5 bg-black/60 backdrop-blur-xl">
@@ -255,7 +301,7 @@ export default function Home() {
               Install SpawnOS and copy <strong>the exact framework built to run e-commerce brands and agencies doing $100K+ per month</strong>—so you can get reports delivered in 3 minutes, full websites built in 11 minutes, and 12 autonomous agents running 24/7.
             </p>
             <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg">
-              SpawnOS is not another AI course and it's not another pile of prompts. It's the operating system built inside a live business with an AI COO and specialist agents—so you can reclaim 20-30 hours a week, scale output fast, and stop being the person every task depends on.
+              SpawnOS is not another AI course and it&apos;s not another pile of prompts. It&apos;s the operating system built inside a live business with an AI COO and specialist agents—so you can reclaim 20-30 hours a week, scale output fast, and stop being the person every task depends on.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
@@ -333,7 +379,7 @@ export default function Home() {
             <div className="surface-card rounded-3xl p-8 sm:p-10">
               <h3 className="text-2xl font-bold text-white">You are not buying my outcomes; you are buying the exact operating model that produced them.</h3>
               <p className="mt-5 text-base leading-7 text-zinc-400">
-                ChatGPT can answer questions, but it won't run your business with memory, roles, delegation, and 24/7 execution. Hiring is expensive. Random tools create more tabs, not more output. SpawnOS gives you the operating system for spawning an AI team—so instead of asking one chatbot for help, you install a system that thinks, delegates, tracks, and executes like a real company.
+                ChatGPT can answer questions, but it won&apos;t run your business with memory, roles, delegation, and 24/7 execution. Hiring is expensive. Random tools create more tabs, not more output. SpawnOS gives you the operating system for spawning an AI team—so instead of asking one chatbot for help, you install a system that thinks, delegates, tracks, and executes like a real company.
               </p>
             </div>
             <div className="space-y-6">
@@ -430,9 +476,20 @@ export default function Home() {
                 </ul>
 
                 <div className="mt-8">
-                  <a href={tier.href} className={tier.emphasized ? "primary-btn w-full" : tier.premium ? "secondary-btn w-full border-orange-500/35 text-orange-100 hover:bg-orange-500/10" : "secondary-btn w-full"}>
-                    {tier.cta}
-                  </a>
+                  {tier.checkoutTier ? (
+                    <button
+                      type="button"
+                      onClick={() => startCheckout(tier.checkoutTier!)}
+                      disabled={loadingTier !== null}
+                      className={`${tier.emphasized ? "primary-btn" : "secondary-btn"} w-full disabled:cursor-not-allowed disabled:opacity-60`}
+                    >
+                      {loadingTier === tier.checkoutTier ? "Redirecting..." : tier.cta}
+                    </button>
+                  ) : (
+                    <a href={tier.href} className={tier.emphasized ? "primary-btn w-full" : tier.premium ? "secondary-btn w-full border-orange-500/35 text-orange-100 hover:bg-orange-500/10" : "secondary-btn w-full"}>
+                      {tier.cta}
+                    </a>
+                  )}
                   {tier.note ? <p className="mt-3 text-center text-sm text-zinc-500">{tier.note}</p> : null}
                 </div>
               </article>
@@ -452,7 +509,7 @@ export default function Home() {
           {[
             ["I'm not technical.", "You do not need to code from scratch—you need to follow a system built for operators, not developers."],
             ["I tried ChatGPT, it didn't work.", "ChatGPT is one tool. SpawnOS shows you how to run a team with roles, memory, delegation, and execution."],
-            ["I don't have time to set this up.", "You do not have time to stay the bottleneck either—this is how you buy back 20-30 hours a week."],
+            ["I don&apos;t have time to set this up.", "You do not have time to stay the bottleneck either—this is how you buy back 20-30 hours a week."],
             ["Is this just another AI course?", "No. SpawnOS is an operating system you install and run—not theory you watch and forget."],
             ["Do I need to be technical to use SpawnOS?", "No. SpawnOS is designed for operators who want leverage, not for developers who want another side project."],
             ["How is this different from just using ChatGPT or Claude?", "ChatGPT gives you answers. SpawnOS gives you an AI COO and specialist team with roles, memory, delegation, and execution."],
