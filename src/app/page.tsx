@@ -51,20 +51,20 @@ const auditIncludes = [
     body: "We identify where leadership attention is still acting as the operating system: approvals, follow-up, reporting, coordination, or context recovery.",
   },
   {
-    title: "Workflow map",
-    body: "We map the current operating flow so you can see where work stalls, loops back, or becomes fragile as the business grows.",
+    title: "AI opportunity map",
+    body: "We map where an AI chief-of-staff layer and specialist support can remove drag across communication, follow-up, reporting, delegation, and retained context.",
   },
   {
-    title: "AI team opportunity map",
-    body: "We outline where an AI chief-of-staff layer and role-based support can remove drag without creating more complexity.",
+    title: "Recommended AI team",
+    body: "You get a practical recommendation for the operating layer, roles, and deployment path that best fit your team complexity and risk tolerance.",
   },
   {
-    title: "Install recommendation",
-    body: "You get a practical recommendation for what to install first, where it should live, and what level of deployment makes sense for your risk tolerance and team.",
+    title: "Estimated upside",
+    body: "We frame where time-saved, efficiency gains, and revenue-protection / upside opportunities are most likely to come from first.",
   },
   {
     title: "Implementation path",
-    body: "If there is a fit, we define the next step: scope, rollout path, and what happens after the audit if you want SpawnOS installed.",
+    body: "If there is a fit, the audit becomes the starting point for the implementation blueprint so the same discovery work does not have to happen twice.",
   },
 ];
 
@@ -99,7 +99,7 @@ const faqItems = [
   {
     question: "What is the SpawnOS Audit?",
     answer:
-      "It is a free, application-based operating assessment for founder-led businesses. We use it to understand the bottleneck, evaluate fit, and recommend the highest-leverage SpawnOS install path.",
+      "It is a free diagnostic for founder-led businesses. We use it to diagnose bottlenecks, identify AI opportunities, recommend the right operating layer, and determine whether SpawnOS is the right implementation path.",
   },
   {
     question: "Who is the audit for?",
@@ -109,12 +109,12 @@ const faqItems = [
   {
     question: "What do we get if we are accepted?",
     answer:
-      "You get a focused diagnosis of the bottleneck, a workflow-level view of where execution is breaking down, and a concrete recommendation for what to install first.",
+      "You get a focused diagnosis of the bottleneck, an AI opportunity map, a recommended AI team structure, and a concrete recommendation for what to install first.",
   },
   {
     question: "What happens after the audit?",
     answer:
-      "If there is a fit, the next step is an implementation recommendation and scoped rollout path. If there is not a fit, you still leave with clearer visibility into where the operating drag actually lives.",
+      "If there is a fit, the next step is an implementation blueprint and scoped rollout path. If there is not a fit, you still leave with clearer visibility into where the operating drag actually lives.",
   },
   {
     question: "How do you talk about security without overpromising?",
@@ -157,7 +157,7 @@ export default function Home() {
             <a href="#security" className="transition hover:text-[var(--color-text)]">Security</a>
             <a href="#faq" className="transition hover:text-[var(--color-text)]">FAQ</a>
           </nav>
-          <a href={auditUrl} className="primary-btn text-xs sm:text-sm">Book Your Audit</a>
+          <a href={auditUrl} className="primary-btn text-xs sm:text-sm">Take the Audit</a>
         </div>
       </header>
 
@@ -178,7 +178,7 @@ export default function Home() {
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-              <a href={auditUrl} className="primary-btn">Book Your Audit</a>
+              <a href={auditUrl} className="primary-btn">Take the Audit</a>
               <a href="#audit" className="secondary-btn">See what the audit includes</a>
             </div>
 
@@ -295,13 +295,13 @@ export default function Home() {
         <div className="section-wrap">
           <SectionHeading
             eyebrow="The SpawnOS Audit"
-            title="A free, application-based audit that shows where the operating bottleneck really lives."
-            body="The SpawnOS Audit is the entry point. It is designed to qualify fit, diagnose the core drag in the business, and determine the most valuable install path—not to push everyone into the same solution."
+            title="A free diagnostic audit that shows where the operating bottleneck really lives."
+            body="The SpawnOS Audit is the first step in designing your company’s AI operating system. It diagnoses the core drag in the business, maps where AI can help, estimates where time and efficiency upside exist, and becomes the implementation starting point if there is a fit."
           />
 
           <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
             <article className="surface-card rounded-3xl p-8 sm:p-10">
-              <h3 className="text-2xl font-bold text-[var(--color-text)]">What the SpawnOS Audit includes</h3>
+              <h3 className="text-2xl font-bold text-[var(--color-text)]">What the SpawnOS Audit delivers</h3>
               <div className="mt-6 space-y-5">
                 {auditIncludes.map((item) => (
                   <div key={item.title} className="flex items-start gap-3 text-base leading-7 text-[#D7DEE8]">
@@ -316,16 +316,16 @@ export default function Home() {
             </article>
 
             <article className="surface-card rounded-3xl p-8 sm:p-10">
-              <h3 className="text-2xl font-bold text-[var(--color-text)]">How qualification works</h3>
+              <h3 className="text-2xl font-bold text-[var(--color-text)]">Why this audit exists</h3>
               <div className="mt-6 space-y-5 text-base leading-7 text-[var(--color-text-muted)]">
-                <p><strong className="text-[var(--color-text)]">What it is:</strong> a strategic operating audit focused on bottlenecks, workflow friction, and AI deployment opportunities.</p>
+                <p><strong className="text-[var(--color-text)]">What it is:</strong> a premium diagnostic focused on founder bottlenecks, workflow friction, AI opportunity mapping, and implementation fit.</p>
                 <p><strong className="text-[var(--color-text)]">Who it is for:</strong> founder-led teams with enough complexity that better systems will actually move the business.</p>
-                <p><strong className="text-[var(--color-text)]">What you get:</strong> diagnosis, a workflow map, an AI opportunity map, and a recommendation for what to install first.</p>
-                <p><strong className="text-[var(--color-text)]">Why it is application-based:</strong> the audit is free, but reserved for businesses that are a real fit for implementation.</p>
-                <p><strong className="text-[var(--color-text)]">What happens after:</strong> if there is a fit, we outline the implementation path and next recommended deployment step.</p>
+                <p><strong className="text-[var(--color-text)]">What you get:</strong> bottleneck diagnosis, an AI opportunity map, a recommended AI team structure, estimated time-saved / efficiency upside framing, and a recommendation for what to install first.</p>
+                <p><strong className="text-[var(--color-text)]">Why it is application-based:</strong> the audit is free, but reserved for businesses where an actual AI operating system implementation could create meaningful leverage.</p>
+                <p><strong className="text-[var(--color-text)]">What happens after:</strong> if there is a fit, your audit becomes the starting point for the implementation blueprint so you do not have to repeat the same information again.</p>
               </div>
               <div className="mt-8">
-                <a href={auditUrl} className="primary-btn w-full">Book Your Audit</a>
+                <a href={auditUrl} className="primary-btn w-full">Take the Audit</a>
               </div>
             </article>
           </div>
@@ -387,7 +387,7 @@ export default function Home() {
       </section>
 
       <section id="faq" className="section-wrap py-16 sm:py-20 lg:py-24">
-        <SectionHeading eyebrow="FAQ" title="Questions serious buyers usually ask before they apply." />
+        <SectionHeading eyebrow="FAQ" title="Questions serious buyers usually ask before they take the audit." />
 
         <div className="grid gap-6 lg:grid-cols-2">
           {faqItems.map((item) => (
@@ -403,15 +403,15 @@ export default function Home() {
         <div className="relative overflow-hidden rounded-[2rem] border border-[rgba(37,99,235,0.25)] bg-[#0F141B]">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_center,rgba(37,99,235,0.18),transparent_40%)]" />
           <div className="relative z-10 px-6 py-12 text-center sm:px-10 sm:py-16 lg:px-16">
-            <span className="eyebrow">Free, application-based audit</span>
+            <span className="eyebrow">Free diagnostic audit</span>
             <h2 className="mx-auto max-w-4xl text-3xl font-extrabold tracking-tight text-[var(--color-text)] sm:text-4xl lg:text-5xl">
-              If leadership is still the workflow glue, book a SpawnOS Audit.
+              If leadership is still the workflow glue, take the SpawnOS Audit.
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[#D7DEE8] sm:text-lg">
-              You will leave with a clearer picture of the bottleneck, the highest-leverage opportunity, and whether SpawnOS is the right implementation path for your business.
+              You will leave with a clearer picture of the bottleneck, the AI opportunity map, the recommended team structure, and whether SpawnOS is the right implementation path for your business.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <a href={auditUrl} className="primary-btn">Book Your Audit</a>
+              <a href={auditUrl} className="primary-btn">Take the Audit</a>
               <a href="#security" className="secondary-btn">Review security posture</a>
             </div>
           </div>
