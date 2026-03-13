@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://spawnos-site.vercel.app"),
+  metadataBase: new URL("https://spawnos.io"),
   title: "SpawnOS Audit — Installed AI Operating System for Founder-Led Businesses",
   description:
     "Book a SpawnOS Audit to assess the founder bottleneck and map an installed AI chief-of-staff layer for follow-up, reporting, delegation, communication triage, and business memory.",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       "Installed AI operating system for founder-led businesses. Book your SpawnOS Audit.",
     type: "website",
-    url: "https://spawnos-site.vercel.app",
+    url: "https://spawnos.io",
     images: [
       {
         url: "/og-image.svg",

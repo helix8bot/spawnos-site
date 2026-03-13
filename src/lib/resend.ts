@@ -64,7 +64,7 @@ function renderEmail({ tier, customerName, siteUrl }: Omit<PurchaseEmailInput, "
             <li>Set up your AI COO and specialist roles.</li>
             <li>Run your first delegation loop and make the system yours.</li>
           </ol>
-          <p style="margin:0 0 24px;color:#a1a1aa">Want us to build it for you? <a href="https://launch.spawnos.io" style="color:#f87171">Apply for custom setup</a>.</p>
+          <p style="margin:0 0 24px;color:#a1a1aa">Want help applying this in your business? <a href="https://audit.spawnos.io" style="color:#93C5FD">Book a SpawnOS Audit</a>.</p>
           <p style="margin:0;color:#71717a">SpawnOS</p>
         </div>
       </div>`,

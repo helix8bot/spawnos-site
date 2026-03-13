@@ -1,83 +1,125 @@
-const auditUrl = "https://launch.spawnos.io";
+const auditUrl = "https://audit.spawnos.io";
 
 const sectionPhotos = {
   hero: {
     src: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600&q=80",
-    alt: "Founder working at a dark desk setup with a laptop and multiple screens.",
+    alt: "Executive operator working across a laptop and multiple screens.",
   },
   trust: {
     src: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1400&q=80",
-    alt: "Operators reviewing business metrics together in a calm office setting.",
+    alt: "Operations leaders reviewing systems and delivery plans together.",
   },
 };
 
 const installItems = [
   {
     title: "AI chief-of-staff layer",
-    body: "A central operating layer that briefs the founder, coordinates moving pieces, and keeps decisions from disappearing into chat threads.",
+    body: "A central operating layer that briefs leadership, captures context, routes next steps, and keeps execution from disappearing into chats and inboxes.",
   },
   {
     title: "Follow-up systems",
-    body: "Persistent follow-up across tasks, conversations, and internal commitments so the business stops relying on whoever remembers last.",
+    body: "Persistent follow-up across tasks, approvals, and conversations so work keeps moving without the founder acting as the reminder engine.",
   },
   {
     title: "Reporting cadence",
-    body: "Regular summaries, status reporting, and leadership visibility so you can see what matters without manually assembling it all yourself.",
+    body: "Structured summaries and leadership visibility so status, blockers, and key decisions show up without someone manually assembling them every week.",
   },
   {
     title: "Delegation workflows",
-    body: "Clear routing of work, recaps, handoffs, and next steps so delegation creates momentum instead of more rework.",
+    body: "Clear handoffs, task routing, recaps, and accountability loops so delegation creates throughput instead of rework.",
   },
   {
     title: "Communication triage",
-    body: "Inbox, team, and client communication support that helps surface what needs founder attention and what can stay delegated.",
+    body: "Support for inbox, team, and stakeholder communication that helps surface what needs executive attention and what can stay delegated.",
   },
   {
     title: "Business memory",
-    body: "Searchable institutional memory for context, decisions, SOPs, and recurring knowledge so critical information stops living only in the founder’s head.",
+    body: "Searchable institutional memory for SOPs, decisions, recurring context, and operating knowledge so the company stops depending on one person to remember everything.",
   },
 ];
 
 const whoItsFor = [
-  "Founder-led businesses with real revenue, team coordination, and operational complexity.",
-  "Operators who are still the escalation point for updates, approvals, and follow-through.",
-  "Businesses that already know AI matters, but do not want another course, toy workflow, or disconnected stack of tools.",
-  "Teams where speed, continuity, delegation, and reporting are now worth more than experimenting forever.",
+  "Founder-led businesses with real revenue, cross-functional coordination, and recurring operating complexity.",
+  "Leaders who are still the escalation point for approvals, updates, clarifications, and follow-through.",
+  "Teams that already know AI matters, but do not want another disconnected stack of tools or another course.",
+  "Operators who care about speed, continuity, governance, and execution quality—not novelty demos.",
 ];
 
 const auditIncludes = [
-  "A bottleneck review of where the founder is still acting as operator, coordinator, and QA layer.",
-  "A first-pass map of where follow-up, reporting, delegation, and communication are currently breaking down.",
-  "A recommendation for the highest-leverage operating layer to install first.",
-  "Qualification on fit, timing, and implementation readiness.",
-  "If there is a strong fit: a tailored install recommendation and rollout path.",
+  {
+    title: "Bottleneck diagnosis",
+    body: "We identify where leadership attention is still acting as the operating system: approvals, follow-up, reporting, coordination, or context recovery.",
+  },
+  {
+    title: "Workflow map",
+    body: "We map the current operating flow so you can see where work stalls, loops back, or becomes fragile as the business grows.",
+  },
+  {
+    title: "AI team opportunity map",
+    body: "We outline where an AI chief-of-staff layer and role-based support can remove drag without creating more complexity.",
+  },
+  {
+    title: "Install recommendation",
+    body: "You get a practical recommendation for what to install first, where it should live, and what level of deployment makes sense for your risk tolerance and team.",
+  },
+  {
+    title: "Implementation path",
+    body: "If there is a fit, we define the next step: scope, rollout path, and what happens after the audit if you want SpawnOS installed.",
+  },
+];
+
+const securityPillars = [
+  {
+    title: "Private networking and controlled deployment",
+    body: "Deployments can be structured on local or controlled infrastructure with private networking in mind, reducing unnecessary public exposure.",
+  },
+  {
+    title: "Least-privilege access",
+    body: "Systems are designed so the agent gets only the access it needs for the job rather than broad, permanent permissions by default.",
+  },
+  {
+    title: "Allowlisted access controls",
+    body: "Production access can be limited to approved users, approved channels, and tightly scoped communication surfaces.",
+  },
+  {
+    title: "Sandboxed workers and controlled execution",
+    body: "Higher-risk work can be isolated in controlled runtimes so one bad prompt or compromised worker does not automatically become full-system access.",
+  },
+  {
+    title: "Auditability and governance",
+    body: "Logging, reviews, alerts, and explicit operating policies help teams understand what the system did and keep governance visible.",
+  },
+  {
+    title: "Production-style hardening mindset",
+    body: "The posture is practical infrastructure discipline: isolate the system, restrict access, patch it, monitor it, and avoid exaggerated security claims.",
+  },
 ];
 
 const faqItems = [
   {
-    question: "Is SpawnOS a course or info product?",
+    question: "What is the SpawnOS Audit?",
     answer:
-      "No. The core offer is an installed operating system and implementation path. Existing playbooks and PDFs can support the sale, but they are positioned as goodwill assets—not the main product.",
+      "It is a free, application-based operating assessment for founder-led businesses. We use it to understand the bottleneck, evaluate fit, and recommend the highest-leverage SpawnOS install path.",
   },
   {
     question: "Who is the audit for?",
     answer:
-      "Founder-led businesses with real operational load. If you are still the person every update, approval, and follow-up has to pass through, the audit is designed for that situation.",
+      "It is best for companies with meaningful operating complexity: recurring team coordination, reporting load, follow-up risk, and a founder or operator still acting as the center of execution.",
+  },
+  {
+    question: "What do we get if we are accepted?",
+    answer:
+      "You get a focused diagnosis of the bottleneck, a workflow-level view of where execution is breaking down, and a concrete recommendation for what to install first.",
   },
   {
     question: "What happens after the audit?",
     answer:
-      "If there is a fit, you receive an install recommendation: what to deploy first, where the leverage is, and what implementation path makes sense from there.",
+      "If there is a fit, the next step is an implementation recommendation and scoped rollout path. If there is not a fit, you still leave with clearer visibility into where the operating drag actually lives.",
   },
   {
-    question: "Is this meant to replace a team?",
+    question: "How do you talk about security without overpromising?",
     answer:
-      "No. The positioning is leverage, continuity, and execution support—not fantasy replacement claims. SpawnOS is meant to reduce founder bottlenecks and strengthen the operating layer around a business.",
-  },
-  {
-    question: "What about security?",
-    answer:
-      "SpawnOS is positioned with a security-first installation approach informed by Johann’s OpenClaw security guidance. This page intentionally avoids overclaiming beyond what has been formally documented. A deeper security research block can be expanded as that deliverable is finalized.",
+      "We keep the claims narrow and factual. SpawnOS follows a hardening-minded posture informed by Johann Sathianathen’s published OpenClaw security guidance and standard least-privilege infrastructure practices—not hype about perfect security.",
   },
 ];
 
@@ -104,16 +146,18 @@ export default function Home() {
     <main className="page-shell">
       <header className="sticky top-0 z-50 border-b border-white/8 bg-[rgba(11,15,20,0.82)] backdrop-blur-xl">
         <div className="section-wrap flex h-16 items-center justify-between gap-4">
-          <a href="#top" className="text-sm font-extrabold uppercase tracking-[0.3em] text-[var(--color-text)]">
-            SpawnOS
+          <a href="#top" className="text-sm font-extrabold uppercase tracking-[0.26em] text-[var(--color-text)]">
+            <span className="text-[#94A3B8]">Spawn</span>
+            <span className="text-white">OS</span>
           </a>
           <nav className="hidden items-center gap-7 text-sm text-[var(--color-text-muted)] md:flex">
             <a href="#problem" className="transition hover:text-[var(--color-text)]">Problem</a>
             <a href="#install" className="transition hover:text-[var(--color-text)]">What we install</a>
             <a href="#audit" className="transition hover:text-[var(--color-text)]">Audit</a>
+            <a href="#security" className="transition hover:text-[var(--color-text)]">Security</a>
             <a href="#faq" className="transition hover:text-[var(--color-text)]">FAQ</a>
           </nav>
-          <a href={auditUrl} className="primary-btn text-xs sm:text-sm">Book Your SpawnOS Audit</a>
+          <a href={auditUrl} className="primary-btn text-xs sm:text-sm">Book Your Audit</a>
         </div>
       </header>
 
@@ -125,18 +169,17 @@ export default function Home() {
               Stop being the operating system for your business.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[#D7DEE8] sm:text-xl">
-              SpawnOS installs an <strong>AI chief-of-staff layer</strong> around the founder so delegation, follow-up, reporting,
-              communication triage, and business memory stop depending on one overloaded human in the middle.
+              SpawnOS installs an <strong>AI chief-of-staff layer</strong> around the founder so follow-up, reporting,
+              delegation, communication triage, and business memory stop depending on one overloaded human in the middle.
             </p>
             <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--color-text-muted)] sm:text-lg">
-              This is not another AI course, prompt pack, or generic automation setup. It is a high-ticket installed operating layer for
-              businesses that have real revenue, real complexity, and a founder who should not still be acting as operator, coordinator,
-              and QA for everything.
+              This is a customer-facing implementation offer for serious operators—not a course, prompt pack, or generic automation bundle.
+              We diagnose the bottleneck first, then recommend the right install path for the business in front of us.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-              <a href={auditUrl} className="primary-btn">Book Your SpawnOS Audit</a>
-              <a href="#install" className="secondary-btn">See what SpawnOS installs</a>
+              <a href={auditUrl} className="primary-btn">Book Your Audit</a>
+              <a href="#audit" className="secondary-btn">See what the audit includes</a>
             </div>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
@@ -159,12 +202,12 @@ export default function Home() {
 
             <div className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-6 lg:p-7">
               <div className="rounded-3xl border border-white/10 bg-[rgba(11,15,20,0.78)] p-5 backdrop-blur">
-                <p className="text-xs uppercase tracking-[0.24em] text-[#94A3B8]">What the founder gets back</p>
+                <p className="text-xs uppercase tracking-[0.24em] text-[#94A3B8]">What the business gets back</p>
                 <div className="mt-4 grid gap-3 sm:grid-cols-2">
                   {[
                     ["Follow-through", "Fewer dropped balls and less manual chasing"],
                     ["Visibility", "Cleaner reporting without assembling it by hand"],
-                    ["Delegation", "More work moves without routing back through you"],
+                    ["Delegation", "More work moves without routing back through leadership"],
                     ["Continuity", "Context persists across people, tasks, and time"],
                   ].map(([title, copy]) => (
                     <div key={title} className="rounded-2xl border border-white/8 bg-[rgba(15,20,27,0.9)] p-4">
@@ -181,24 +224,24 @@ export default function Home() {
 
       <section id="problem" className="section-wrap py-12 sm:py-16 lg:py-24">
         <SectionHeading
-          eyebrow="The real bottleneck"
-          title="Many founder-led businesses do not have a tool problem. They have an operating-system problem."
-          body="The founder is still the coordinator, the follow-up layer, the escalation point, the context-holder, and the quality-control backstop. That is manageable for a while. Then growth turns into drag."
+          eyebrow="The operating problem"
+          title="Growth gets expensive when the founder is still the coordinator, context holder, and QA layer."
+          body="Many businesses do not have a tool problem. They have a continuity problem. Work still waits for one person to clarify, approve, remind, summarize, or reconnect the dots."
         />
 
         <div className="grid gap-6 lg:grid-cols-3">
           {[
             {
-              title: "You are still acting as operator",
-              body: "Projects move only after you clarify, approve, remind, or rewrite. The business keeps looking for leverage, but execution still routes through you.",
+              title: "Leadership is still acting as operator",
+              body: "Projects move only after someone at the top clarifies, approves, reminds, or rewrites. The business keeps looking for leverage, but execution still routes through one person.",
             },
             {
               title: "Delegation keeps boomeranging back",
-              body: "Without a proper operating layer, delegation creates rework. You hand work off, then get pulled back in to fill gaps, restore context, or QA what should have been handled.",
+              body: "Without a real operating layer, delegation creates more supervision, not more relief. Work gets handed off, then pulled back for context recovery, follow-up, or QA.",
             },
             {
-              title: "Follow-up and reporting are too fragile",
-              body: "Critical updates, tasks, and commitments are spread across inboxes, meetings, chats, and documents. You compensate with your attention—until that stops scaling.",
+              title: "Follow-up and reporting are fragile",
+              body: "Critical updates, open loops, and commitments are scattered across meetings, inboxes, chats, and docs. The company compensates with human memory—until that stops scaling.",
             },
           ].map((item) => (
             <article key={item.title} className="surface-card rounded-3xl p-7 sm:p-8">
@@ -231,29 +274,19 @@ export default function Home() {
       <section id="fit" className="section-wrap py-16 sm:py-20 lg:py-24">
         <SectionHeading
           eyebrow="Who it’s for"
-          title="Built for founder-led businesses with real revenue and real operational complexity."
-          body="The main page stays broad enough for qualified founder-led businesses, while still speaking directly to the founder bottleneck. This is not aimed at hobby projects or companies looking for cheap AI novelty."
+          title="Built for serious operators with real complexity to solve."
+          body="SpawnOS is best for founder-led companies where speed, continuity, governance, and delegated execution matter more than experimenting with another AI toy."
         />
 
-        <div className="grid gap-6 lg:grid-cols-[1fr_1.05fr] lg:items-start">
-          <div className="surface-card rounded-3xl p-8 sm:p-10">
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#94A3B8]">Best fit signals</p>
-            <div className="mt-6 space-y-4">
-              {whoItsFor.map((item) => (
-                <div key={item} className="flex items-start gap-3 text-base leading-7 text-[#D7DEE8]">
-                  <CheckIcon />
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="surface-card rounded-3xl p-8 sm:p-10">
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#94A3B8]">Not the right frame</p>
-            <div className="mt-6 space-y-5 text-base leading-7 text-[var(--color-text-muted)]">
-              <p>SpawnOS is not positioned as a budget course, a $17 / $67 / $147 pricing ladder, or a one-click shortcut for people who do not yet have meaningful operating complexity.</p>
-              <p>It is for founders who want an installed system that makes the business run with more continuity, faster follow-through, and less dependence on the founder being the human API for the company.</p>
-            </div>
+        <div className="mx-auto max-w-4xl surface-card rounded-3xl p-8 sm:p-10">
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#94A3B8]">Best fit signals</p>
+          <div className="mt-6 space-y-4">
+            {whoItsFor.map((item) => (
+              <div key={item} className="flex items-start gap-3 text-base leading-7 text-[#D7DEE8]">
+                <CheckIcon />
+                <span>{item}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -261,86 +294,88 @@ export default function Home() {
       <section id="audit" className="border-y border-white/8 bg-white/[0.02] py-16 sm:py-20 lg:py-24">
         <div className="section-wrap">
           <SectionHeading
-            eyebrow="The entry point"
-            title="The SpawnOS Audit is a free qualification audit for serious operators."
-            body="The goal is not to sell everyone. The goal is to determine fit, identify the bottleneck, and map the highest-leverage install path."
+            eyebrow="The SpawnOS Audit"
+            title="A free, application-based audit that shows where the operating bottleneck really lives."
+            body="The SpawnOS Audit is the entry point. It is designed to qualify fit, diagnose the core drag in the business, and determine the most valuable install path—not to push everyone into the same solution."
           />
 
           <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
             <article className="surface-card rounded-3xl p-8 sm:p-10">
-              <h3 className="text-2xl font-bold text-[var(--color-text)]">What the audit includes</h3>
-              <div className="mt-6 space-y-4">
+              <h3 className="text-2xl font-bold text-[var(--color-text)]">What the SpawnOS Audit includes</h3>
+              <div className="mt-6 space-y-5">
                 {auditIncludes.map((item) => (
-                  <div key={item} className="flex items-start gap-3 text-base leading-7 text-[#D7DEE8]">
+                  <div key={item.title} className="flex items-start gap-3 text-base leading-7 text-[#D7DEE8]">
                     <CheckIcon />
-                    <span>{item}</span>
+                    <div>
+                      <p className="font-semibold text-[var(--color-text)]">{item.title}</p>
+                      <p className="text-[var(--color-text-muted)]">{item.body}</p>
+                    </div>
                   </div>
                 ))}
               </div>
             </article>
 
             <article className="surface-card rounded-3xl p-8 sm:p-10">
-              <h3 className="text-2xl font-bold text-[var(--color-text)]">How it is framed</h3>
+              <h3 className="text-2xl font-bold text-[var(--color-text)]">How qualification works</h3>
               <div className="mt-6 space-y-5 text-base leading-7 text-[var(--color-text-muted)]">
-                <p>The audit is positioned as an application and qualification step, not a mass-market giveaway.</p>
-                <p>That keeps the offer premium and ensures the next conversation is about implementation readiness, not bargain hunting.</p>
-                <p>If there is not a fit, the business still leaves with more clarity on where the founder bottleneck actually lives.</p>
+                <p><strong className="text-[var(--color-text)]">What it is:</strong> a strategic operating audit focused on bottlenecks, workflow friction, and AI deployment opportunities.</p>
+                <p><strong className="text-[var(--color-text)]">Who it is for:</strong> founder-led teams with enough complexity that better systems will actually move the business.</p>
+                <p><strong className="text-[var(--color-text)]">What you get:</strong> diagnosis, a workflow map, an AI opportunity map, and a recommendation for what to install first.</p>
+                <p><strong className="text-[var(--color-text)]">Why it is application-based:</strong> the audit is free, but reserved for businesses that are a real fit for implementation.</p>
+                <p><strong className="text-[var(--color-text)]">What happens after:</strong> if there is a fit, we outline the implementation path and next recommended deployment step.</p>
               </div>
               <div className="mt-8">
-                <a href={auditUrl} className="primary-btn w-full">Book Your SpawnOS Audit</a>
+                <a href={auditUrl} className="primary-btn w-full">Book Your Audit</a>
               </div>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="trust" className="section-wrap py-16 sm:py-20 lg:py-24">
+      <section id="security" className="section-wrap py-16 sm:py-20 lg:py-24">
         <SectionHeading
-          eyebrow="Proof and trust"
-          title="Positioned with restraint, operational credibility, and security-first framing."
-          body="This page avoids fake certainty, inflated credentials, and hype-heavy claims. The trust case is built from legitimate operating proof, disciplined positioning, and a credible implementation posture."
+          eyebrow="Security and trust"
+          title="Security by architecture, restraint, and hardening—not by hype."
+          body="SpawnOS is positioned for businesses that want control without inflated promises. The goal is to deploy responsibly, reduce blast radius, and keep governance visible as AI becomes part of real operations."
         />
 
         <div className="mb-6 overflow-hidden rounded-[2rem] border border-white/10 bg-[#0F141B]">
           <img src={sectionPhotos.trust.src} alt={sectionPhotos.trust.alt} className="h-[260px] w-full object-cover sm:h-[320px] lg:h-[360px]" loading="lazy" />
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-2">
-          <article className="surface-card rounded-3xl p-8 sm:p-10">
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#94A3B8]">Current trust anchors</p>
-            <div className="mt-6 space-y-5 text-base leading-7 text-[var(--color-text-muted)]">
-              <p>SpawnOS is now framed as an installed operating layer, not a pile of low-ticket education products.</p>
-              <p>Existing playbooks and PDFs can still be used—but as free goodwill assets that demonstrate thoughtfulness and operating depth.</p>
-              <p>The promise stays grounded: better delegation, stronger follow-up, cleaner reporting, improved continuity, and less founder drag.</p>
-            </div>
-          </article>
+        <div className="surface-card rounded-3xl p-8 sm:p-10">
+          <p className="text-base leading-7 text-[var(--color-text-muted)]">
+            SpawnOS security is grounded in standard infrastructure discipline, not marketing theater. Johann Sathianathen—a software engineer and founder who publicly describes himself as a former Cisco engineer—has published a practical OpenClaw hardening guide centered on separate-machine deployment, non-root users, private networking, allowlisted access, sandboxed subagents, and ongoing audits. That is the posture this offer aligns with: keep the system private, restrict what it can access, and treat it like real production infrastructure.
+          </p>
+        </div>
 
-          <article className="surface-card rounded-3xl p-8 sm:p-10">
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#94A3B8]">Security and implementation posture</p>
-            <div className="mt-6 space-y-5 text-base leading-7 text-[var(--color-text-muted)]">
-              <p>SpawnOS is installed with a security-first approach informed by Johann’s OpenClaw security guidance.</p>
-              <p>That means the site can credibly signal caution, governance, and implementation discipline without inventing certifications or overclaiming beyond what has been formally documented.</p>
-              <div className="rounded-2xl border border-dashed border-[rgba(148,163,184,0.35)] bg-[rgba(148,163,184,0.06)] p-4 text-sm text-[#CBD5E1]">
-                Placeholder: expand this block with finalized security research copy and any approved implementation specifics once the research deliverable is ready.
-              </div>
-            </div>
-          </article>
+        <div className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {securityPillars.map((item) => (
+            <article key={item.title} className="surface-card rounded-3xl p-7 sm:p-8">
+              <h3 className="text-xl font-bold text-[var(--color-text)]">{item.title}</h3>
+              <p className="mt-4 text-base leading-7 text-[var(--color-text-muted)]">{item.body}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-6 rounded-3xl border border-[rgba(148,163,184,0.22)] bg-[rgba(148,163,184,0.05)] p-6 text-sm leading-7 text-[#CBD5E1]">
+          No serious operator should be promised perfect security. The credible promise is a hardened deployment posture: isolate the environment, restrict access, allowlist communication surfaces, control execution, and maintain logs and reviews over time.
         </div>
       </section>
 
       <section id="path" className="border-y border-white/8 bg-white/[0.02] py-16 sm:py-20 lg:py-24">
         <div className="section-wrap">
           <SectionHeading
-            eyebrow="Offer path"
-            title="A clear path from diagnosis to implementation."
-            body="The conversion path is intentionally simple: qualify the bottleneck, recommend the right install, then implement with the appropriate level of scope and support."
+            eyebrow="From audit to implementation"
+            title="A clear path from diagnosis to deployment."
+            body="The path is intentionally simple: qualify the bottleneck, recommend the right operating layer, then implement with the appropriate scope and governance."
           />
 
           <div className="grid gap-6 md:grid-cols-3">
             {[
-              ["1. Audit", "Understand the founder bottleneck, operating friction, and where the first leverage should come from."],
-              ["2. Install recommendation", "Map the right operating layer, workflow scope, and implementation path based on business complexity and fit."],
-              ["3. Implementation", "Deploy the recommended SpawnOS layer with a premium, structured, security-aware approach."],
+              ["1. Audit", "Diagnose the founder bottleneck, operating friction, and where the first leverage should come from."],
+              ["2. Install recommendation", "Map the right operating layer, workflow scope, and deployment path based on complexity, fit, and risk posture."],
+              ["3. Implementation", "Deploy the recommended SpawnOS layer with structured rollout, adoption support, and a security-aware operating posture."],
             ].map(([title, body]) => (
               <article key={title} className="surface-card rounded-3xl p-7 sm:p-8">
                 <h3 className="text-xl font-bold text-[var(--color-text)]">{title}</h3>
@@ -352,7 +387,7 @@ export default function Home() {
       </section>
 
       <section id="faq" className="section-wrap py-16 sm:py-20 lg:py-24">
-        <SectionHeading eyebrow="FAQ" title="Questions serious buyers are likely to ask." />
+        <SectionHeading eyebrow="FAQ" title="Questions serious buyers usually ask before they apply." />
 
         <div className="grid gap-6 lg:grid-cols-2">
           {faqItems.map((item) => (
@@ -368,16 +403,16 @@ export default function Home() {
         <div className="relative overflow-hidden rounded-[2rem] border border-[rgba(37,99,235,0.25)] bg-[#0F141B]">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_center,rgba(37,99,235,0.18),transparent_40%)]" />
           <div className="relative z-10 px-6 py-12 text-center sm:px-10 sm:py-16 lg:px-16">
-            <span className="eyebrow">Qualified founder-led businesses only</span>
+            <span className="eyebrow">Free, application-based audit</span>
             <h2 className="mx-auto max-w-4xl text-3xl font-extrabold tracking-tight text-[var(--color-text)] sm:text-4xl lg:text-5xl">
-              If you are tired of being the person everything has to pass through, book your SpawnOS Audit.
+              If leadership is still the workflow glue, book a SpawnOS Audit.
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[#D7DEE8] sm:text-lg">
-              Get a clear view of the bottleneck, the highest-leverage install path, and whether SpawnOS is the right operating layer for your business.
+              You will leave with a clearer picture of the bottleneck, the highest-leverage opportunity, and whether SpawnOS is the right implementation path for your business.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <a href={auditUrl} className="primary-btn">Book Your SpawnOS Audit</a>
-              <a href="#trust" className="secondary-btn">Review trust + security framing</a>
+              <a href={auditUrl} className="primary-btn">Book Your Audit</a>
+              <a href="#security" className="secondary-btn">Review security posture</a>
             </div>
           </div>
         </div>
@@ -388,7 +423,7 @@ export default function Home() {
           <p>© {new Date().getFullYear()} SpawnOS. Installed AI operating systems for founder-led businesses.</p>
           <div className="flex flex-wrap items-center gap-5">
             <a href="#top" className="transition hover:text-[var(--color-text)]">Back to top</a>
-            <a href="mailto:support@spawnos.io" className="transition hover:text-[var(--color-text)]">Contact</a>
+            <a href="mailto:hello@spawnos.io" className="transition hover:text-[var(--color-text)]">Contact</a>
           </div>
         </div>
       </footer>
