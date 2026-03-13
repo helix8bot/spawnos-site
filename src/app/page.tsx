@@ -1,497 +1,350 @@
-"use client";
-
-import { useState } from "react";
-import type { Tier } from "@/lib/commerce";
+const auditUrl = "https://launch.spawnos.io";
 
 const sectionPhotos = {
   hero: {
-    src: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80",
-    alt: "Founder working late at a dark desk setup with a laptop and glowing screens.",
+    src: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600&q=80",
+    alt: "Founder working at a dark desk setup with a laptop and multiple screens.",
   },
-  pain: {
-    src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=80",
-    alt: "Operator working late at a laptop, showing the strain of running everything alone.",
-  },
-  mechanism: {
-    src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80",
-    alt: "Clean multi-monitor workspace set up like an automation command center.",
-  },
-  proof: {
-    src: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1200&q=80",
-    alt: "Confident operators reviewing growth metrics together on a laptop.",
-  },
-  pricing: {
-    src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80",
-    alt: "Modern remote work setup with a laptop in a premium coworking-style space.",
-  },
-  faq: {
-    src: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1200&q=80",
-    alt: "Relaxed entrepreneurs having a calm conversation in a modern workspace.",
-  },
-  finalCta: {
-    src: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&q=80",
-    alt: "City skyline at sunset suggesting momentum, ambition, and a strong next chapter.",
+  trust: {
+    src: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1400&q=80",
+    alt: "Operators reviewing business metrics together in a calm office setting.",
   },
 };
 
-const ClockIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-6 w-6">
-    <circle cx="12" cy="12" r="9" />
-    <path d="M12 7v5l3 2" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const LightningIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-6 w-6">
-    <path d="M13 2 5 14h5l-1 8 8-12h-5l1-8Z" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const NetworkIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-6 w-6">
-    <circle cx="12" cy="5" r="2.5" />
-    <circle cx="6" cy="17" r="2.5" />
-    <circle cx="18" cy="17" r="2.5" />
-    <path d="M10.2 6.9 7.8 14.8M13.8 6.9l2.4 7.9M8.5 17h7" strokeLinecap="round" />
-  </svg>
-);
-
-const CheckIcon = () => (
-  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" className="check-icon h-5 w-5">
-    <path d="M4.5 10.5 8 14l7.5-8" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const proofCards = [
+const installItems = [
   {
-    icon: <ClockIcon />,
-    title: "Reports in 3 min",
-    copy: "Reports delivered in 3 minutes — so you stop waiting hours or days for insight and start making faster decisions.",
+    title: "AI chief-of-staff layer",
+    body: "A central operating layer that briefs the founder, coordinates moving pieces, and keeps decisions from disappearing into chat threads.",
   },
   {
-    icon: <LightningIcon />,
-    title: "Websites built in 11 min",
-    copy: "Full websites built in 11 minutes — so launches, tests, and offers stop getting stuck behind your bandwidth.",
+    title: "Follow-up systems",
+    body: "Persistent follow-up across tasks, conversations, and internal commitments so the business stops relying on whoever remembers last.",
   },
   {
-    icon: <NetworkIcon />,
-    title: "12 agents running 24/7",
-    copy: "12 autonomous agents running 24/7 — so work keeps moving even when you are offline, asleep, or focused elsewhere.",
+    title: "Reporting cadence",
+    body: "Regular summaries, status reporting, and leadership visibility so you can see what matters without manually assembling it all yourself.",
+  },
+  {
+    title: "Delegation workflows",
+    body: "Clear routing of work, recaps, handoffs, and next steps so delegation creates momentum instead of more rework.",
+  },
+  {
+    title: "Communication triage",
+    body: "Inbox, team, and client communication support that helps surface what needs founder attention and what can stay delegated.",
+  },
+  {
+    title: "Business memory",
+    body: "Searchable institutional memory for context, decisions, SOPs, and recurring knowledge so critical information stops living only in the founder’s head.",
   },
 ];
 
-const pricingTiers: Array<{
-  name: string;
-  price: string;
-  description: string;
-  bullets: string[];
-  cta: string;
-  href: string;
-  badge: string | null;
-  emphasized: boolean;
-  premium: boolean;
-  note?: string;
-  checkoutTier?: Tier;
-}> = [
-  {
-    name: "SpawnOS Quickstart Playbook",
-    price: "$17",
-    description:
-      "Get the standalone framework that shows you how to stop working solo and start structuring your first AI team fast.",
-    bullets: [
-      "Plan your AI team structure in one sitting with the exact operating model that removes you as the bottleneck.",
-      "Eliminate tool chaos fast by seeing how an AI team is organized instead of guessing with random prompts.",
-      "Replace scattered experimentation with a clear blueprint for roles, delegation, and execution.",
-      "Create your first working AI team map today so you know what to build first and what to ignore.",
-      "Start buying back operator time immediately with the simplest path to 20-30 hours/week saved.",
-    ],
-    cta: "Start Building Your AI Team →",
-    href: "#final-cta",
-    checkoutTier: "starter",
-    badge: null,
-    emphasized: false,
-    premium: false,
-  },
-  {
-    name: "SpawnOS Full System",
-    price: "$67",
-    description:
-      "Install the complete methodology for spawning your AI COO and specialist team using the same production logic behind a real $100K+/month operator framework.",
-    bullets: [
-      "Plan your full operating system with the exact structure behind 12 autonomous agents running 24/7.",
-      "Eliminate weeks of setup confusion by following a proven path instead of piecing together docs, prompts, and YouTube videos.",
-      "Replace AI tool usage with AI team execution so work keeps moving without everything flowing through you.",
-      "Create reports, content, websites, and workflows faster with the same system that delivers reports in 3 minutes and websites in 11 minutes.",
-      "Turn one overworked operator into a leveraged operator with the exact framework built to run e-commerce brands and agencies doing $100K+ per month.",
-    ],
-    cta: "Install the Full System →",
-    href: "#final-cta",
-    checkoutTier: "system",
-    badge: "Most Popular",
-    emphasized: true,
-    premium: false,
-  },
-  {
-    name: "SpawnOS Bespoke Build",
-    price: "$147",
-    description:
-      "We build it. You run it. Custom OpenClaw AI team setup for your business with white-glove onboarding and limited application-only spots.",
-    bullets: [
-      "Plan your custom AI team around your actual business model instead of forcing generic templates onto a unique operation.",
-      "Eliminate technical setup friction with a white-glove implementation path designed to get you live faster.",
-      "Replace DIY guessing with bespoke infrastructure matched to your offers, workflows, and growth bottlenecks.",
-      "Create a working AI team for your business—not someone else's demo—with guided deployment and practical handoff.",
-      "Skip straight to leverage so you can start operating with your team instead of spending weeks trying to piece one together.",
-    ],
-    cta: "Apply for Custom Build →",
-    href: "https://launch.spawnos.io",
-    badge: null,
-    emphasized: false,
-    premium: true,
-    note: "Limited spots — application required",
-  },
+const whoItsFor = [
+  "Founder-led businesses with real revenue, team coordination, and operational complexity.",
+  "Operators who are still the escalation point for updates, approvals, and follow-through.",
+  "Businesses that already know AI matters, but do not want another course, toy workflow, or disconnected stack of tools.",
+  "Teams where speed, continuity, delegation, and reporting are now worth more than experimenting forever.",
 ];
 
-function HeroVisual() {
-  return (
-    <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-950 shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
-      <img
-        src={sectionPhotos.hero.src}
-        alt={sectionPhotos.hero.alt}
-        className="h-full min-h-[560px] w-full object-cover"
-        loading="eager"
-      />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,10,0.12),rgba(10,10,10,0.78)_45%,rgba(10,10,10,0.96))]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(239,68,68,0.2),transparent_35%)]" />
+const auditIncludes = [
+  "A bottleneck review of where the founder is still acting as operator, coordinator, and QA layer.",
+  "A first-pass map of where follow-up, reporting, delegation, and communication are currently breaking down.",
+  "A recommendation for the highest-leverage operating layer to install first.",
+  "Qualification on fit, timing, and implementation readiness.",
+  "If there is a strong fit: a tailored install recommendation and rollout path.",
+];
 
-      <div className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-6 lg:p-7">
-        <div className="flex h-full flex-col gap-4">
-          <div className="flex items-center justify-between rounded-2xl border border-white/8 bg-black/35 px-4 py-3 text-sm text-zinc-300 backdrop-blur">
-            <div>
-              <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Mission Control</p>
-              <p className="mt-1 text-sm font-semibold text-zinc-100">AI team command center</p>
-            </div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1 text-xs font-semibold text-red-300">
-              <span className="h-2 w-2 rounded-full bg-red-400" /> 12 live
-            </div>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="metric-tile">
-              <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Daily reporting</p>
-              <p className="mt-3 text-3xl font-extrabold text-white">3 min</p>
-              <p className="mt-2 text-sm text-zinc-400">Reports delivered before you open your inbox.</p>
-            </div>
-            <div className="metric-tile">
-              <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Build velocity</p>
-              <p className="mt-3 text-3xl font-extrabold text-white">11 min</p>
-              <p className="mt-2 text-sm text-zinc-400">Landing pages shipped without waiting on your bandwidth.</p>
-            </div>
-          </div>
-
-          <div className="metric-tile">
-            <div className="mb-4 flex items-center justify-between">
-              <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Agent network</p>
-                <p className="mt-1 text-lg font-semibold text-white">Roles, memory, delegation, execution</p>
-              </div>
-              <p className="rounded-full border border-orange-500/20 bg-orange-500/10 px-3 py-1 text-xs font-semibold text-orange-200">
-                $14.2K on $1.5K ad spend
-              </p>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-3">
-              {[
-                ["COO", "Routing live"],
-                ["Content", "Queued"],
-                ["Ops", "Monitoring"],
-                ["Research", "Active"],
-                ["Web", "Deploying"],
-                ["QA", "Passed"],
-              ].map(([name, status]) => (
-                <div key={name} className="rounded-xl border border-white/6 bg-zinc-950/70 px-3 py-3">
-                  <p className="text-sm font-semibold text-zinc-100">{name}</p>
-                  <p className="mt-1 text-xs text-zinc-500">{status}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+const faqItems = [
+  {
+    question: "Is SpawnOS a course or info product?",
+    answer:
+      "No. The core offer is an installed operating system and implementation path. Existing playbooks and PDFs can support the sale, but they are positioned as goodwill assets—not the main product.",
+  },
+  {
+    question: "Who is the audit for?",
+    answer:
+      "Founder-led businesses with real operational load. If you are still the person every update, approval, and follow-up has to pass through, the audit is designed for that situation.",
+  },
+  {
+    question: "What happens after the audit?",
+    answer:
+      "If there is a fit, you receive an install recommendation: what to deploy first, where the leverage is, and what implementation path makes sense from there.",
+  },
+  {
+    question: "Is this meant to replace a team?",
+    answer:
+      "No. The positioning is leverage, continuity, and execution support—not fantasy replacement claims. SpawnOS is meant to reduce founder bottlenecks and strengthen the operating layer around a business.",
+  },
+  {
+    question: "What about security?",
+    answer:
+      "SpawnOS is positioned with a security-first installation approach informed by Johann’s OpenClaw security guidance. This page intentionally avoids overclaiming beyond what has been formally documented. A deeper security research block can be expanded as that deliverable is finalized.",
+  },
+];
 
 function SectionHeading({ eyebrow, title, body }: { eyebrow: string; title: string; body?: string }) {
   return (
     <div className="mx-auto mb-12 max-w-3xl text-center">
       <span className="eyebrow">{eyebrow}</span>
-      <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">{title}</h2>
-      {body ? <p className="mt-5 text-base leading-7 text-zinc-400 sm:text-lg">{body}</p> : null}
+      <h2 className="text-3xl font-extrabold tracking-tight text-[var(--color-text)] sm:text-4xl lg:text-5xl">{title}</h2>
+      {body ? <p className="mt-5 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg">{body}</p> : null}
     </div>
   );
 }
 
-function SectionImage({ src, alt, eager = false, height = "h-[320px] sm:h-[420px]" }: { src: string; alt: string; eager?: boolean; height?: string }) {
+function CheckIcon() {
   return (
-    <div className={`relative overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-950 ${height}`}>
-      <img
-        src={src}
-        alt={alt}
-        loading={eager ? "eager" : "lazy"}
-        className="h-full w-full object-cover"
-      />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,10,0.08),rgba(10,10,10,0.18)_45%,rgba(10,10,10,0.5))]" />
-    </div>
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" className="mt-0.5 h-5 w-5 shrink-0 text-[var(--color-primary)]">
+      <path d="M4.5 10.5 8 14l7.5-8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }
 
 export default function Home() {
-  const [loadingTier, setLoadingTier] = useState<Tier | null>(null);
-
-  async function startCheckout(tier: Tier) {
-    try {
-      setLoadingTier(tier);
-      const response = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ tier }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok || !data?.url) {
-        alert(data?.error || "Checkout coming soon — email build@spawnos.io");
-        return;
-      }
-
-      window.location.href = data.url;
-    } catch (error) {
-      console.error("Checkout start failed", error);
-      alert("Checkout coming soon — email build@spawnos.io");
-    } finally {
-      setLoadingTier(null);
-    }
-  }
-
   return (
     <main className="page-shell">
-      <header className="sticky top-0 z-50 border-b border-white/5 bg-black/60 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-white/8 bg-[rgba(11,15,20,0.82)] backdrop-blur-xl">
         <div className="section-wrap flex h-16 items-center justify-between gap-4">
-          <a href="#top" className="text-sm font-extrabold uppercase tracking-[0.3em] text-zinc-100">
-            <span className="text-red-400">Spawn</span>OS
+          <a href="#top" className="text-sm font-extrabold uppercase tracking-[0.3em] text-[var(--color-text)]">
+            SpawnOS
           </a>
-          <nav className="hidden items-center gap-7 text-sm text-zinc-400 md:flex">
-            <a href="#pain" className="transition hover:text-white">Why SpawnOS</a>
-            <a href="#mechanism" className="transition hover:text-white">How it works</a>
-            <a href="#pricing" className="transition hover:text-white">Pricing</a>
-            <a href="#faq" className="transition hover:text-white">FAQ</a>
+          <nav className="hidden items-center gap-7 text-sm text-[var(--color-text-muted)] md:flex">
+            <a href="#problem" className="transition hover:text-[var(--color-text)]">Problem</a>
+            <a href="#install" className="transition hover:text-[var(--color-text)]">What we install</a>
+            <a href="#audit" className="transition hover:text-[var(--color-text)]">Audit</a>
+            <a href="#faq" className="transition hover:text-[var(--color-text)]">FAQ</a>
           </nav>
-          <a href="#pricing" className="primary-btn text-xs sm:text-sm">Start Spawning My AI Team</a>
+          <a href={auditUrl} className="primary-btn text-xs sm:text-sm">Book Your SpawnOS Audit</a>
         </div>
       </header>
 
       <section id="top" className="section-wrap py-16 sm:py-20 lg:py-28">
-        <div className="hero-grid items-center gap-10 xl:gap-14">
-          <div className="fade-up order-1">
-            <span className="eyebrow">Install the operating system that gets you out of the middle</span>
-            <h1 className="max-w-3xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
-              Stop Working Solo. Start Spawning the AI Team That Runs Your Business.
+        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] xl:gap-14">
+          <div>
+            <span className="eyebrow">Installed AI operating system for founder-led businesses</span>
+            <h1 className="max-w-4xl text-4xl font-extrabold tracking-tight text-[var(--color-text)] sm:text-5xl lg:text-6xl xl:text-7xl">
+              Stop being the operating system for your business.
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300 sm:text-xl">
-              Install SpawnOS and copy <strong>the exact framework built to run e-commerce brands and agencies doing $100K+ per month</strong>—so you can get reports delivered in 3 minutes, full websites built in 11 minutes, and 12 autonomous agents running 24/7.
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-[#D7DEE8] sm:text-xl">
+              SpawnOS installs an <strong>AI chief-of-staff layer</strong> around the founder so delegation, follow-up, reporting,
+              communication triage, and business memory stop depending on one overloaded human in the middle.
             </p>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg">
-              SpawnOS is not another AI course and it&apos;s not another pile of prompts. It&apos;s the operating system built inside a live business with an AI COO and specialist agents—so you can reclaim 20-30 hours a week, scale output fast, and stop being the person every task depends on.
+            <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--color-text-muted)] sm:text-lg">
+              This is not another AI course, prompt pack, or generic automation setup. It is a high-ticket installed operating layer for
+              businesses that have real revenue, real complexity, and a founder who should not still be acting as operator, coordinator,
+              and QA for everything.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-              <a href="#pricing" className="primary-btn">Start Spawning My AI Team</a>
-              <a href="#proof" className="secondary-btn">See the proof</a>
+              <a href={auditUrl} className="primary-btn">Book Your SpawnOS Audit</a>
+              <a href="#install" className="secondary-btn">See what SpawnOS installs</a>
             </div>
-            <p className="mt-4 text-sm text-zinc-500">Get instant access in minutes — no coding required.</p>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
               {[
-                "Reports delivered in 3 minutes",
-                "Full websites built in 11 minutes",
-                "12 autonomous agents running 24/7",
+                "Delegation without more founder drag",
+                "Reporting and follow-up that keep moving",
+                "Institutional memory beyond one person",
               ].map((item) => (
-                <div key={item} className="surface-card rounded-2xl px-4 py-4 text-sm text-zinc-300">
+                <div key={item} className="surface-card rounded-2xl px-4 py-4 text-sm text-[#D7DEE8]">
                   {item}
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="fade-up order-2">
-            <HeroVisual />
-          </div>
-        </div>
-      </section>
+          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#0F141B] shadow-[0_30px_80px_rgba(0,0,0,0.4)]">
+            <img src={sectionPhotos.hero.src} alt={sectionPhotos.hero.alt} className="h-full min-h-[560px] w-full object-cover" loading="eager" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,11,15,0.15),rgba(8,11,15,0.76)_48%,rgba(8,11,15,0.96))]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.18),transparent_38%)]" />
 
-      <section id="pain" className="section-wrap py-12 sm:py-16 lg:py-24">
-        <SectionHeading
-          eyebrow="The solo operator trap"
-          title="Every extra week you stay the bottleneck, your growth taxes you with more admin, slower launches, and missed follow-up."
-          body="You're still acting as CEO, CMO, COO, operator, and support team at the same time. That works until the business hits a ceiling—then every new sale creates more work, and growth stalls because everything still has to pass through you."
-        />
-
-        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <div className="grid gap-6 lg:grid-cols-1">
-            {[
-              {
-                title: "You Are the Bottleneck",
-                body: "You're still acting as CEO, CMO, COO, operator, and support team at the same time. That works until the business hits a ceiling—then every new sale creates more work, and growth stalls because everything still has to pass through you.",
-              },
-              {
-                title: "Hiring Is Not the Smart Next Move",
-                body: "A real hire costs $50-80K plus benefits, management time, training, and mistakes you pay for twice. At this stage, you don't need payroll overhead—you need leverage that gives you execution without adding another full-time dependency.",
-              },
-              {
-                title: "AI Tools Alone Don't Execute",
-                body: "You've already tried ChatGPT, Claude, or random AI tools—and what you got was help, not a team. Tools can answer prompts, but they don't replace roles, systems, memory, delegation, and follow-through unless they're structured to work like an operating system.",
-              },
-            ].map((item) => (
-              <article key={item.title} className="surface-card rounded-3xl p-7 sm:p-8">
-                <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                <p className="mt-4 text-base leading-7 text-zinc-400">{item.body}</p>
-              </article>
-            ))}
-          </div>
-
-          <SectionImage src={sectionPhotos.pain.src} alt={sectionPhotos.pain.alt} />
-        </div>
-
-        <div className="mt-10 flex justify-center">
-          <a href="#pricing" className="primary-btn">Take Me Out of the Bottleneck</a>
-        </div>
-      </section>
-
-      <section id="mechanism" className="border-y border-white/5 bg-white/[0.02] py-16 sm:py-20 lg:py-24">
-        <div className="section-wrap">
-          <SectionHeading
-            eyebrow="Why this works"
-            title="Why an AI Team Beats AI Tools, VAs, and Hiring at This Stage"
-            body="This is not theory. It is a field-tested operating system built around 12 autonomous agents running 24/7, reports delivered in 3 minutes, full websites built in 11 minutes, and $14.2K generated in February 2026 on $1.5K ad spend. The unlock is not “using AI more.” The unlock is installing an AI team with clear roles, memory, delegation, and execution—so the business stops depending on one tired operator and starts moving like a coordinated company."
-          />
-
-          <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-            <div className="surface-card rounded-3xl p-8 sm:p-10">
-              <h3 className="text-2xl font-bold text-white">You are not buying my outcomes; you are buying the exact operating model that produced them.</h3>
-              <p className="mt-5 text-base leading-7 text-zinc-400">
-                ChatGPT can answer questions, but it won&apos;t run your business with memory, roles, delegation, and 24/7 execution. Hiring is expensive. Random tools create more tabs, not more output. SpawnOS gives you the operating system for spawning an AI team—so instead of asking one chatbot for help, you install a system that thinks, delegates, tracks, and executes like a real company.
-              </p>
-            </div>
-            <div className="space-y-6">
-              <div className="surface-card rounded-3xl p-8 sm:p-10">
-                <h3 className="text-2xl font-bold text-white">What changes after you install it</h3>
-                <div className="mt-6 space-y-5 text-sm leading-6 text-zinc-400">
-                  <p>You stop opening ten tabs just to move one project forward.</p>
-                  <p>You stop being the handoff point for every report, page, workflow, and follow-up.</p>
-                  <p>You start operating with a team that can think in roles, retain context, and execute around the clock.</p>
+            <div className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-6 lg:p-7">
+              <div className="rounded-3xl border border-white/10 bg-[rgba(11,15,20,0.78)] p-5 backdrop-blur">
+                <p className="text-xs uppercase tracking-[0.24em] text-[#94A3B8]">What the founder gets back</p>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  {[
+                    ["Follow-through", "Fewer dropped balls and less manual chasing"],
+                    ["Visibility", "Cleaner reporting without assembling it by hand"],
+                    ["Delegation", "More work moves without routing back through you"],
+                    ["Continuity", "Context persists across people, tasks, and time"],
+                  ].map(([title, copy]) => (
+                    <div key={title} className="rounded-2xl border border-white/8 bg-[rgba(15,20,27,0.9)] p-4">
+                      <p className="text-sm font-semibold text-[var(--color-text)]">{title}</p>
+                      <p className="mt-2 text-sm leading-6 text-[var(--color-text-muted)]">{copy}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
-              <SectionImage src={sectionPhotos.mechanism.src} alt={sectionPhotos.mechanism.alt} height="h-[280px] sm:h-[320px]" />
             </div>
           </div>
         </div>
       </section>
 
-      <section id="proof" className="section-wrap py-16 sm:py-20 lg:py-24">
+      <section id="problem" className="section-wrap py-12 sm:py-16 lg:py-24">
         <SectionHeading
-          eyebrow="Real results from real operations"
-          title="What SpawnOS Actually Produces in the Real World"
-          body="This is what happens when you stop using AI like a chatbot and start using it like infrastructure. SpawnOS gives you a production-ready operating system that turns AI from “occasionally useful” into a team that creates leverage every day."
+          eyebrow="The real bottleneck"
+          title="Many founder-led businesses do not have a tool problem. They have an operating-system problem."
+          body="The founder is still the coordinator, the follow-up layer, the escalation point, the context-holder, and the quality-control backstop. That is manageable for a while. Then growth turns into drag."
         />
 
-        <div className="mb-6">
-          <SectionImage src={sectionPhotos.proof.src} alt={sectionPhotos.proof.alt} height="h-[260px] sm:h-[320px] lg:h-[360px]" />
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-3">
-          {proofCards.map((card) => (
-            <article key={card.title} className="surface-card rounded-3xl p-8">
-              <div className="stat-icon">{card.icon}</div>
-              <h3 className="text-xl font-bold text-white">{card.title}</h3>
-              <p className="mt-4 text-base leading-7 text-zinc-400">{card.copy}</p>
+        <div className="grid gap-6 lg:grid-cols-3">
+          {[
+            {
+              title: "You are still acting as operator",
+              body: "Projects move only after you clarify, approve, remind, or rewrite. The business keeps looking for leverage, but execution still routes through you.",
+            },
+            {
+              title: "Delegation keeps boomeranging back",
+              body: "Without a proper operating layer, delegation creates rework. You hand work off, then get pulled back in to fill gaps, restore context, or QA what should have been handled.",
+            },
+            {
+              title: "Follow-up and reporting are too fragile",
+              body: "Critical updates, tasks, and commitments are spread across inboxes, meetings, chats, and documents. You compensate with your attention—until that stops scaling.",
+            },
+          ].map((item) => (
+            <article key={item.title} className="surface-card rounded-3xl p-7 sm:p-8">
+              <h3 className="text-xl font-bold text-[var(--color-text)]">{item.title}</h3>
+              <p className="mt-4 text-base leading-7 text-[var(--color-text-muted)]">{item.body}</p>
             </article>
           ))}
         </div>
+      </section>
 
-        <div className="mt-6 grid gap-6 lg:grid-cols-2">
-          <div className="surface-card rounded-3xl p-8 sm:p-10">
-            <ul className="space-y-4 text-base text-zinc-300">
-              <li><strong className="text-white">$14.2K revenue in February 2026 on $1.5K ad spend (9.5x ROAS)</strong> — proof that this system supports real commercial output, not toy demos.</li>
-              <li><strong className="text-white">20-30 hours saved per week</strong> — so you can shift your time back into growth, offers, creative, and decision-making.</li>
-            </ul>
-          </div>
-          <div className="surface-card rounded-3xl p-8 sm:p-10">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-zinc-500">Why now</p>
-            <p className="mt-4 text-base leading-7 text-zinc-400">
-              The operators who install leverage now will compound faster while everyone else stays trapped in manual work.
-            </p>
+      <section id="install" className="border-y border-white/8 bg-white/[0.02] py-16 sm:py-20 lg:py-24">
+        <div className="section-wrap">
+          <SectionHeading
+            eyebrow="What SpawnOS installs"
+            title="A practical AI chief-of-staff layer built around your operating reality."
+            body="SpawnOS is designed to remove founder bottlenecks in the boring, valuable parts of the business: communication, coordination, follow-through, reporting, and retained context."
+          />
+
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {installItems.map((item) => (
+              <article key={item.title} className="surface-card rounded-3xl p-7 sm:p-8">
+                <h3 className="text-xl font-bold text-[var(--color-text)]">{item.title}</h3>
+                <p className="mt-4 text-base leading-7 text-[var(--color-text-muted)]">{item.body}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section id="pricing" className="border-y border-white/5 bg-white/[0.02] py-16 sm:py-20 lg:py-24">
-        <div className="section-wrap">
-          <SectionHeading
-            eyebrow="Choose your path"
-            title="Choose How Fast You Want to Stop Being the Bottleneck."
-            body="Start with the playbook, install the full system, or apply for a custom build. Every option is designed to buy back operator time faster than hiring or piecing tools together."
-          />
+      <section id="fit" className="section-wrap py-16 sm:py-20 lg:py-24">
+        <SectionHeading
+          eyebrow="Who it’s for"
+          title="Built for founder-led businesses with real revenue and real operational complexity."
+          body="The main page stays broad enough for qualified founder-led businesses, while still speaking directly to the founder bottleneck. This is not aimed at hobby projects or companies looking for cheap AI novelty."
+        />
 
-          <div className="mb-8">
-            <SectionImage src={sectionPhotos.pricing.src} alt={sectionPhotos.pricing.alt} height="h-[260px] sm:h-[320px] lg:h-[340px]" />
+        <div className="grid gap-6 lg:grid-cols-[1fr_1.05fr] lg:items-start">
+          <div className="surface-card rounded-3xl p-8 sm:p-10">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#94A3B8]">Best fit signals</p>
+            <div className="mt-6 space-y-4">
+              {whoItsFor.map((item) => (
+                <div key={item} className="flex items-start gap-3 text-base leading-7 text-[#D7DEE8]">
+                  <CheckIcon />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="grid gap-6 xl:grid-cols-3">
-            {pricingTiers.map((tier) => (
-              <article
-                key={tier.name}
-                className={`rounded-3xl p-8 sm:p-9 ${tier.emphasized ? "surface-card accent-ring border-red-500/40 bg-[#171717]" : "surface-card"} ${tier.premium ? "premium-ring border-orange-500/30 bg-[linear-gradient(180deg,rgba(249,115,22,0.08),rgba(20,20,20,0.95))]" : ""}`}
-              >
-                <div className="flex min-h-[88px] flex-col justify-between gap-4 sm:flex-row sm:items-start">
-                  <div>
-                    <h3 className="text-2xl font-bold text-white">{tier.name}</h3>
-                    <p className="mt-3 text-4xl font-extrabold tracking-tight text-white">{tier.price}</p>
+          <div className="surface-card rounded-3xl p-8 sm:p-10">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#94A3B8]">Not the right frame</p>
+            <div className="mt-6 space-y-5 text-base leading-7 text-[var(--color-text-muted)]">
+              <p>SpawnOS is not positioned as a budget course, a $17 / $67 / $147 pricing ladder, or a one-click shortcut for people who do not yet have meaningful operating complexity.</p>
+              <p>It is for founders who want an installed system that makes the business run with more continuity, faster follow-through, and less dependence on the founder being the human API for the company.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="audit" className="border-y border-white/8 bg-white/[0.02] py-16 sm:py-20 lg:py-24">
+        <div className="section-wrap">
+          <SectionHeading
+            eyebrow="The entry point"
+            title="The SpawnOS Audit is a free qualification audit for serious operators."
+            body="The goal is not to sell everyone. The goal is to determine fit, identify the bottleneck, and map the highest-leverage install path."
+          />
+
+          <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+            <article className="surface-card rounded-3xl p-8 sm:p-10">
+              <h3 className="text-2xl font-bold text-[var(--color-text)]">What the audit includes</h3>
+              <div className="mt-6 space-y-4">
+                {auditIncludes.map((item) => (
+                  <div key={item} className="flex items-start gap-3 text-base leading-7 text-[#D7DEE8]">
+                    <CheckIcon />
+                    <span>{item}</span>
                   </div>
-                  {tier.badge ? (
-                    <span className="inline-flex rounded-full border border-red-400/20 bg-red-500 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-white">
-                      {tier.badge}
-                    </span>
-                  ) : null}
-                </div>
+                ))}
+              </div>
+            </article>
 
-                <p className="mt-5 text-base leading-7 text-zinc-400">{tier.description}</p>
+            <article className="surface-card rounded-3xl p-8 sm:p-10">
+              <h3 className="text-2xl font-bold text-[var(--color-text)]">How it is framed</h3>
+              <div className="mt-6 space-y-5 text-base leading-7 text-[var(--color-text-muted)]">
+                <p>The audit is positioned as an application and qualification step, not a mass-market giveaway.</p>
+                <p>That keeps the offer premium and ensures the next conversation is about implementation readiness, not bargain hunting.</p>
+                <p>If there is not a fit, the business still leaves with more clarity on where the founder bottleneck actually lives.</p>
+              </div>
+              <div className="mt-8">
+                <a href={auditUrl} className="primary-btn w-full">Book Your SpawnOS Audit</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
 
-                <ul className="mt-6 space-y-3.5">
-                  {tier.bullets.map((bullet) => (
-                    <li key={bullet} className="flex items-start gap-3 text-sm leading-6 text-zinc-300">
-                      <CheckIcon />
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
+      <section id="trust" className="section-wrap py-16 sm:py-20 lg:py-24">
+        <SectionHeading
+          eyebrow="Proof and trust"
+          title="Positioned with restraint, operational credibility, and security-first framing."
+          body="This page avoids fake certainty, inflated credentials, and hype-heavy claims. The trust case is built from legitimate operating proof, disciplined positioning, and a credible implementation posture."
+        />
 
-                <div className="mt-8">
-                  {tier.checkoutTier ? (
-                    <button
-                      type="button"
-                      onClick={() => startCheckout(tier.checkoutTier!)}
-                      disabled={loadingTier !== null}
-                      className={`${tier.emphasized ? "primary-btn" : "secondary-btn"} w-full disabled:cursor-not-allowed disabled:opacity-60`}
-                    >
-                      {loadingTier === tier.checkoutTier ? "Redirecting..." : tier.cta}
-                    </button>
-                  ) : (
-                    <a href={tier.href} className={tier.emphasized ? "primary-btn w-full" : tier.premium ? "secondary-btn w-full border-orange-500/35 text-orange-100 hover:bg-orange-500/10" : "secondary-btn w-full"}>
-                      {tier.cta}
-                    </a>
-                  )}
-                  {tier.note ? <p className="mt-3 text-center text-sm text-zinc-500">{tier.note}</p> : null}
-                </div>
+        <div className="mb-6 overflow-hidden rounded-[2rem] border border-white/10 bg-[#0F141B]">
+          <img src={sectionPhotos.trust.src} alt={sectionPhotos.trust.alt} className="h-[260px] w-full object-cover sm:h-[320px] lg:h-[360px]" loading="lazy" />
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-2">
+          <article className="surface-card rounded-3xl p-8 sm:p-10">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#94A3B8]">Current trust anchors</p>
+            <div className="mt-6 space-y-5 text-base leading-7 text-[var(--color-text-muted)]">
+              <p>SpawnOS is now framed as an installed operating layer, not a pile of low-ticket education products.</p>
+              <p>Existing playbooks and PDFs can still be used—but as free goodwill assets that demonstrate thoughtfulness and operating depth.</p>
+              <p>The promise stays grounded: better delegation, stronger follow-up, cleaner reporting, improved continuity, and less founder drag.</p>
+            </div>
+          </article>
+
+          <article className="surface-card rounded-3xl p-8 sm:p-10">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#94A3B8]">Security and implementation posture</p>
+            <div className="mt-6 space-y-5 text-base leading-7 text-[var(--color-text-muted)]">
+              <p>SpawnOS is installed with a security-first approach informed by Johann’s OpenClaw security guidance.</p>
+              <p>That means the site can credibly signal caution, governance, and implementation discipline without inventing certifications or overclaiming beyond what has been formally documented.</p>
+              <div className="rounded-2xl border border-dashed border-[rgba(148,163,184,0.35)] bg-[rgba(148,163,184,0.06)] p-4 text-sm text-[#CBD5E1]">
+                Placeholder: expand this block with finalized security research copy and any approved implementation specifics once the research deliverable is ready.
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="path" className="border-y border-white/8 bg-white/[0.02] py-16 sm:py-20 lg:py-24">
+        <div className="section-wrap">
+          <SectionHeading
+            eyebrow="Offer path"
+            title="A clear path from diagnosis to implementation."
+            body="The conversion path is intentionally simple: qualify the bottleneck, recommend the right install, then implement with the appropriate level of scope and support."
+          />
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              ["1. Audit", "Understand the founder bottleneck, operating friction, and where the first leverage should come from."],
+              ["2. Install recommendation", "Map the right operating layer, workflow scope, and implementation path based on business complexity and fit."],
+              ["3. Implementation", "Deploy the recommended SpawnOS layer with a premium, structured, security-aware approach."],
+            ].map(([title, body]) => (
+              <article key={title} className="surface-card rounded-3xl p-7 sm:p-8">
+                <h3 className="text-xl font-bold text-[var(--color-text)]">{title}</h3>
+                <p className="mt-4 text-base leading-7 text-[var(--color-text-muted)]">{body}</p>
               </article>
             ))}
           </div>
@@ -499,64 +352,43 @@ export default function Home() {
       </section>
 
       <section id="faq" className="section-wrap py-16 sm:py-20 lg:py-24">
-        <SectionHeading eyebrow="Common questions" title="Questions? Answers." />
-
-        <div className="mb-8">
-          <SectionImage src={sectionPhotos.faq.src} alt={sectionPhotos.faq.alt} height="h-[240px] sm:h-[280px] lg:h-[320px]" />
-        </div>
+        <SectionHeading eyebrow="FAQ" title="Questions serious buyers are likely to ask." />
 
         <div className="grid gap-6 lg:grid-cols-2">
-          {[
-            ["I'm not technical.", "You do not need to code from scratch—you need to follow a system built for operators, not developers."],
-            ["I tried ChatGPT, it didn't work.", "ChatGPT is one tool. SpawnOS shows you how to run a team with roles, memory, delegation, and execution."],
-            ["I don&apos;t have time to set this up.", "You do not have time to stay the bottleneck either—this is how you buy back 20-30 hours a week."],
-            ["Is this just another AI course?", "No. SpawnOS is an operating system you install and run—not theory you watch and forget."],
-            ["Do I need to be technical to use SpawnOS?", "No. SpawnOS is designed for operators who want leverage, not for developers who want another side project."],
-            ["How is this different from just using ChatGPT or Claude?", "ChatGPT gives you answers. SpawnOS gives you an AI COO and specialist team with roles, memory, delegation, and execution."],
-            ["How long does it take to start seeing value?", "Fast. The point is leverage quickly—reports in 3 minutes, websites in 11 minutes, and 20-30 hours/week saved."],
-            ["Is SpawnOS another AI information product with hype and no proof?", "No. It is built from a live operating system, with 12 autonomous agents and $14.2K revenue on $1.5K ad spend."],
-          ].map(([question, answer]) => (
-            <article key={question} className="surface-card rounded-3xl p-7 sm:p-8">
-              <h3 className="text-lg font-bold text-white">{question}</h3>
-              <p className="mt-4 text-base leading-7 text-zinc-400">{answer}</p>
+          {faqItems.map((item) => (
+            <article key={item.question} className="surface-card rounded-3xl p-7 sm:p-8">
+              <h3 className="text-lg font-bold text-[var(--color-text)]">{item.question}</h3>
+              <p className="mt-4 text-base leading-7 text-[var(--color-text-muted)]">{item.answer}</p>
             </article>
           ))}
         </div>
       </section>
 
       <section id="final-cta" className="section-wrap py-16 sm:py-20 lg:py-24">
-        <div className="relative overflow-hidden rounded-[2rem] border border-red-500/20 bg-zinc-950">
-          <img
-            src={sectionPhotos.finalCta.src}
-            alt={sectionPhotos.finalCta.alt}
-            loading="lazy"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,10,0.4),rgba(10,10,10,0.82)_45%,rgba(10,10,10,0.95))]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_center,rgba(239,68,68,0.22),transparent_40%)]" />
-
-          <div className="surface-card accent-ring relative z-10 rounded-[2rem] bg-black/25 px-6 py-10 text-center sm:px-10 sm:py-14 lg:px-16">
-            <span className="eyebrow">Ready to install your AI team?</span>
-            <h2 className="mx-auto max-w-4xl text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              Every week you wait is another 20-30 hours lost to tasks your AI team could already be handling.
+        <div className="relative overflow-hidden rounded-[2rem] border border-[rgba(37,99,235,0.25)] bg-[#0F141B]">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_center,rgba(37,99,235,0.18),transparent_40%)]" />
+          <div className="relative z-10 px-6 py-12 text-center sm:px-10 sm:py-16 lg:px-16">
+            <span className="eyebrow">Qualified founder-led businesses only</span>
+            <h2 className="mx-auto max-w-4xl text-3xl font-extrabold tracking-tight text-[var(--color-text)] sm:text-4xl lg:text-5xl">
+              If you are tired of being the person everything has to pass through, book your SpawnOS Audit.
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-zinc-300 sm:text-lg">
-              Start spawning your AI team now—or apply for a guided build if you want personalized implementation.
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[#D7DEE8] sm:text-lg">
+              Get a clear view of the bottleneck, the highest-leverage install path, and whether SpawnOS is the right operating layer for your business.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <a href="#pricing" className="primary-btn">Install the System That Buys Back My Time</a>
-              <a href="https://launch.spawnos.io" className="secondary-btn border-orange-500/35 text-orange-100 hover:bg-orange-500/10">Apply for Custom Build →</a>
+              <a href={auditUrl} className="primary-btn">Book Your SpawnOS Audit</a>
+              <a href="#trust" className="secondary-btn">Review trust + security framing</a>
             </div>
           </div>
         </div>
       </section>
 
-      <footer className="border-t border-white/5 py-10">
-        <div className="section-wrap flex flex-col gap-4 text-sm text-zinc-500 md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} SpawnOS. Stop working solo. Start spawning.</p>
+      <footer className="border-t border-white/8 py-10">
+        <div className="section-wrap flex flex-col gap-4 text-sm text-[var(--color-text-muted)] md:flex-row md:items-center md:justify-between">
+          <p>© {new Date().getFullYear()} SpawnOS. Installed AI operating systems for founder-led businesses.</p>
           <div className="flex flex-wrap items-center gap-5">
-            <a href="#top" className="transition hover:text-zinc-300">Back to top</a>
-            <a href="mailto:support@spawnos.io" className="transition hover:text-zinc-300">Contact</a>
+            <a href="#top" className="transition hover:text-[var(--color-text)]">Back to top</a>
+            <a href="mailto:support@spawnos.io" className="transition hover:text-[var(--color-text)]">Contact</a>
           </div>
         </div>
       </footer>

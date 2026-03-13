@@ -3,16 +3,16 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://spawnos-site.vercel.app"),
-  title: "SpawnOS — Stop Working Solo. Start Spawning the AI Team That Runs Your Business.",
+  title: "SpawnOS Audit — Installed AI Operating System for Founder-Led Businesses",
   description:
-    "Install SpawnOS and copy the exact framework built to run e-commerce brands and agencies doing $100K+ per month.",
+    "Book a SpawnOS Audit to assess the founder bottleneck and map an installed AI chief-of-staff layer for follow-up, reporting, delegation, communication triage, and business memory.",
   icons: {
     icon: "/favicon.svg",
   },
   openGraph: {
-    title: "SpawnOS",
+    title: "SpawnOS Audit",
     description:
-      "Stop working solo. Start spawning the AI team that runs your business.",
+      "Installed AI operating system for founder-led businesses. Book your SpawnOS Audit.",
     type: "website",
     url: "https://spawnos-site.vercel.app",
     images: [
@@ -20,15 +20,15 @@ export const metadata: Metadata = {
         url: "/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "SpawnOS",
+        alt: "SpawnOS Audit",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SpawnOS",
+    title: "SpawnOS Audit",
     description:
-      "Stop working solo. Start spawning the AI team that runs your business.",
+      "Installed AI operating system for founder-led businesses. Book your SpawnOS Audit.",
     images: ["/og-image.svg"],
   },
 };
