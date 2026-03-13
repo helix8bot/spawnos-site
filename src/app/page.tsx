@@ -152,7 +152,7 @@ export default function Home() {
           </a>
           <nav className="hidden items-center gap-7 text-sm text-[var(--color-text-muted)] md:flex">
             <a href="#problem" className="transition hover:text-[var(--color-text)]">Problem</a>
-            <a href="#install" className="transition hover:text-[var(--color-text)]">What we install</a>
+            <a href="#install" className="transition hover:text-[var(--color-text)]">What We Install</a>
             <a href="#audit" className="transition hover:text-[var(--color-text)]">Audit</a>
             <a href="#security" className="transition hover:text-[var(--color-text)]">Security</a>
             <a href="#faq" className="transition hover:text-[var(--color-text)]">FAQ</a>
